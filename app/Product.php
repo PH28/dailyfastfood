@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Food;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,26 +15,26 @@ class Product extends Model
 
     public function category ()
     {
-    	return $this->belongsTo('App\Category');
+    	return $this->belongsTo('Food\Category');
     }
 
     public function orderDetails ()
     {
-    	return $this->hasMany('App\OrderDetail');
+    	return $this->hasMany('Food\OrderDetail');
     }
 
     public function discounts ()
     {
-    	return $this->hasMany('App\Discount');
+    	return $this->hasMany('Food\Discount');
     }
 
     public function comments ()
     {
-    	return $this->hasMany('App\Comment');
+    	return $this->hasMany('Food\Comment');
     }
 
     public function images ()
     {
-    	return $this->hasMany('App\Image');
+    	return $this->hasMany('Food\Image');
     }
 }

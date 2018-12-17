@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Food;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -32,16 +32,16 @@ class User extends Authenticatable
 
     public function role ()
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('Food\Role');
     }
 
     public function orders ()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany('Food\Order');
     }
 
     public function comments ()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('Food\Comment');
     }
 }

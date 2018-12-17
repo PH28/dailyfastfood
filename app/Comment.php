@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Food;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,11 +15,11 @@ class Comment extends Model
 
     public function user ()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('Food\User');
     }
 
     public function product ()
     {
-    	return $this->belongsTo('App\Product');
+    	return $this->belongsTo('Food\Product');
     }
 }

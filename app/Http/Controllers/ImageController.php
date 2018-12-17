@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Food\Http\Controllers;
 
-use App\Image;
+use Food\Image;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -41,7 +41,7 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param  \Food\Image  $image
      * @return \Illuminate\Http\Response
      */
     public function show(Image $image)
@@ -52,7 +52,7 @@ class ImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Image  $image
+     * @param  \Food\Image  $image
      * @return \Illuminate\Http\Response
      */
     public function edit(Image $image)
@@ -64,7 +64,7 @@ class ImageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
+     * @param  \Food\Image  $image
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Image $image)
@@ -75,7 +75,7 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Image  $image
+     * @param  \Food\Image  $image
      * @return \Illuminate\Http\Response
      */
     public function destroy(Image $image)

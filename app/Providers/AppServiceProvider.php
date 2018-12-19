@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Food\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

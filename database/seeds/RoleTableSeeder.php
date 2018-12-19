@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Food\Role;
 
 class RoleTableSeeder extends Seeder
 {
@@ -11,9 +12,13 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
-        	['name' => 'admin'],
-        	['name' => 'user']
-        ]);
+        $roles = array(
+                        ['name' => 'admin'],
+                        ['name' => 'user']
+                    );
+
+        foreach ($roles as $value) {
+            Role::create($value);
+        }
     }
 }

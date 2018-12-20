@@ -3,6 +3,7 @@
 namespace Food\Http\Controllers;
 
 use Food\User;
+use Food\Category;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,9 +13,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
+        $category= Category::pluck('name','id');
+        $users = User::all();
+
+        return view('admin.indexUser',compact('users','user','category'));
     }
 
     /**

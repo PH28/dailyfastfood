@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::group([
+// 		'middleware' => 'is.user',
+// 		'prefix' => 'users',
+// 		'namespace' => 'User'
+// 	], function(){
+// 		Route::get('/logout', 'LoginController@logout')->name('users.logout');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
+Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
+
+// Route::get('register', 'Auth\RegisterController@getRegister');
+// Route::post('register', 'Auth\RegisterController@postRegister');

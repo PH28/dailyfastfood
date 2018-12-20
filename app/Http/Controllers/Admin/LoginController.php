@@ -27,7 +27,12 @@ class LoginController extends Controller
         }
     }
     public function home(User $user){
-        $category= Category::pluck('name','id');
-        return view('admin.home',compact('user','category'));
+        if($user->role_id==1){
+            $category= Category::pluck('name','id');
+            return view('admin.home',compact('user','category'));
+        }else{
+            return redirect()->route('adminlogin')->with('login_errors','bạn không phải là admin');;
+        }
+       
     }
 }

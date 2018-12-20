@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
+<video id="video_background" preload="auto" autoplay="true" loop="loop" muted volume="0">
+            <source src="{{asset('video/keyboard.webm')}}" type="video/webm"/>
+            <source src="{{asset('video/keyboard.ogv')}}" type="video/ogg ogv"; codecs="theora, vorbis"/>
+            <source src="{{asset('video/keyboard.mp4')}}" type="video/mp4"/>
+    </video>
 <div id="div_top" class="form-group">
 		</div>
 		<div id=form_login>
@@ -49,6 +54,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label  class="col-md-4 col-form-label text-md-right"></label>
+
+                            <div class="col-md-6 text-danger">
+
+
+                                @if (session('login_errors'))
+
+                                        <strong>{{ session('login_errors') }}</strong>
+
+                                @endif
+                            </div>
+                        </div>  
 				<div class="checkbox ml-5">
 				<label for="" >
 					<input type="checkbox" class="form-check-input " name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} > Remember me

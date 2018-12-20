@@ -69,4 +69,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function getRegister()
+    {
+        if (Auth::check())
+        {
+            return redirect('home');
+        } else {
+            return view('auth.register');
+        }
+    }
 }

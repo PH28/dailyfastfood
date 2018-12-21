@@ -7,6 +7,9 @@ use Food\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Food\Http\Requests\RegisterRequest;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -64,9 +67,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'dob' => $data['dob'],
+            'gender' => $data['gender'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'role_id' => 2
         ]);
     }
 
@@ -77,6 +86,19 @@ class RegisterController extends Controller
             return redirect('home');
         } else {
             return view('auth.register');
+        }
+    }
+
+    public function postRegister(RegisterRequest $request)
+    {
+        $data = $request->all();
+
+        if ($this->create($data)) {
+            Session::flash('success', 'Đăng ký thành viên thành công!');
+            return redirect('register');
+        } else {
+            Session::flash('error', 'Đăng ký thành viên thất bại!');
+            return redirect('register');
         }
     }
 }

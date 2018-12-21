@@ -1,77 +1,144 @@
-@extends('layouts.app')
+<!--
+        Author: W3layouts
+        Author URL: http://w3layouts.com
+        License: Creative Commons Attribution 3.0 Unported
+        License URL: http://creativecommons.org/licenses/by/3.0/
+    -->
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <!DOCTYPE html>
+    <html>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- Head -->
+    <head>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <title>Existing Login Form a Flat Responsive Widget Template :: W3layouts</title>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Existing Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    <link href="{{ asset('user/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all" />
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <!-- Style --> <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css" media="all">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <!-- //Fonts -->
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    </head>
+    <!-- //Head -->
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+    <!-- Body -->
+    <body>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+        <h1>DAILY FAST FOODS</h1>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <div class="w3layoutscontaineragileits">
+        <h2>Register here</h2>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+        {{-- @if (count($errors) > 0)
+             <ul>
+                 @foreach($errors->all() as $error)
+                     <li class="text-danger"> {{ $error }}</li>
+                 @endforeach
+             </ul>
+         @endif --}}
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+         @if ( Session::has('success') )
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <strong>{{ Session::get('success') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
             </div>
+        @endif
+        <?php //Hiển thị thông báo lỗi?>
+        @if ( Session::has('error') )
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong>{{ Session::get('error') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+        @endif
+
+            <form action="{{ route('register') }}" method="post">
+                @csrf
+                @if( $errors->has('first_name'))
+                    <p>{{$errors->first('first_name')}}</p>
+                @endif
+                <input type="text" name="first_name" placeholder="FIRST NAME">
+
+                @if( $errors->has('last_name'))
+                    <p>{{$errors->first('last_name')}}</p>
+                @endif
+                <input type="text" name="last_name" placeholder="LAST NAME">
+
+                @if( $errors->has('dob'))
+                    <p>{{$errors->first('dob')}}</p>
+                @endif
+                <input type="text" name="dob" placeholder="DATE OF BIRTH (YYYY-mm-dd)">
+
+                @if( $errors->has('gender'))
+                    <p>{{$errors->first('gender')}}</p>
+                @endif
+                <ul class="gendercheck">
+                    <li>
+                        <input type="radio" id="male" value="1" name="gender" checked>
+                        <label for=""><span></span>MALE</label>
+                        <input type="radio" id="female" value="2" name="gender">
+                        <label for=""><span></span>FEMALE</label>
+                    </li>
+                </ul>
+
+                @if( $errors->has('email'))
+                    <p>{{$errors->first('email')}}</p>
+                @endif
+                <input type="text" name="email" placeholder="EMAIL">
+
+                @if( $errors->has('password'))
+                    <p>{{$errors->first('password')}}</p>
+                @endif
+                <input type="password" name="password" placeholder="PASSWORD">
+
+                 @if( $errors->has('password_confirmation'))
+                    <p>{{$errors->first('password_confirmation')}}</p>
+                @endif
+                <input type="password" name="password_confirmation" placeholder="CONFIRM PASSWORD">
+
+                @if( $errors->has('phone'))
+                    <p>{{$errors->first('phone')}}</p>
+                @endif
+                <input type="text" name="phone" placeholder="PHONE">
+
+                 @if( $errors->has('address'))
+                    <p>{{$errors->first('address')}}</p>
+                @endif
+                <input type="text" name="address" placeholder="ADDRESS">
+
+                <div class="aitssendbuttonw3ls">
+                    <input type="submit" value="REGISTER">
+                    <p> You have account <span>→</span> <a class="w3_play_icon1" href="{{ route('login') }}"> Login</a></p>
+                    <div class="clear"></div>
+                </div>
+            </form>
         </div>
-    </div>
-</div>
-@endsection
+        
+        <div class="w3footeragile">
+            <p> &copy; 2018 Register Form</p>
+        </div>
+
+        
+        <script type="text/javascript" src="{{ asset('user/js/jquery-2.1.4.js') }}"></script>
+
+            <script src="{{ asset('user/js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
+
+    </body>
+    <!-- //Body -->
+
+    </html>

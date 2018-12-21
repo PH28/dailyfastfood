@@ -36,13 +36,16 @@ Route::post('register', [ 'as' => 'register', 'uses' => 'Auth\RegisterController
 Route::get('/admin/login','Admin\LoginController@showLoginForm')->name('adminlogin');
 Route::post('/admin/login','Admin\LoginController@checkLogin')->name('adminlogin');
 
-//thiếu middleware dể phân quyền cho admin
-Route::group(['prefix' => 'admin'], function() {
+//thiếu middleware để phân quyền cho admin
+// group của admin mới vào được
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
-    Route::get('/home/{user}', 'Admin\LoginController@home')->name('admin.home');
+    Route::get('/home', 'Admin\LoginController@home')->name('admin.home');
+    route::get('/','Admin\LoginController@logout')->name('admin.logout');
 
     Route::group(['prefix' => 'users'], function() {
-        Route::get('/{user}','UserController@index')->name('users.index');
+    Route::get('/','UserController@index')->name('users.index');
+
     });
 });
 

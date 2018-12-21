@@ -16,8 +16,8 @@
 			<th>quyền</th>
 		</tr>
 		@foreach( $users as $item)
+		
 			<tr>
-
 				<td>{{ $item->id }}</td>
 				<td>{{ $item->first_name }}</td>
 				<td>{{ $item->last_name }}</td>

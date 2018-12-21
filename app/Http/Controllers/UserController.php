@@ -5,6 +5,7 @@ namespace Food\Http\Controllers;
 use Food\User;
 use Food\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,8 +14,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
+        $user = Auth::user();
         $category= Category::pluck('name','id');
         $users = User::all();
 

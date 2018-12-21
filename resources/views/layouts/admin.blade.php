@@ -77,7 +77,7 @@
                       <li><a href="chartjs2.html">các thống kê</a></li>
                     </ul>
                   </li>
-                  <li><a href="{{route('users.index',Auth::user()->id)}}"><i class="fa fa-clone"></i>User <span class="fa "></span></a>
+                  <li><a href="{{route('users.index')}}"><i class="fa fa-clone"></i>User <span class="fa "></span></a>
                     
                   </li>
                 </ul>
@@ -115,7 +115,7 @@
               </div>
               <ul class="nav navbar-nav navbar-right">
                <li> 
-                <a href="login.html" class="pull-right"><i class="fa fa-sign-out pull-right "></i> Log Out</a></li>
+                <a href="{{route('admin.logout')}}" class="pull-right"><i class="fa fa-sign-out pull-right "></i> Log Out</a></li>
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="{{asset('images/admin/a.jpg')}}" alt="">{{$user->first_name}} {{$user->last_name}}

@@ -40,9 +40,11 @@ Route::post('/admin/login','Admin\LoginController@checkLogin')->name('adminlogin
 // group của admin mới vào được
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
-    Route::get('/home/{user}', 'Admin\LoginController@home')->name('admin.home');
+    Route::get('/home', 'Admin\LoginController@home')->name('admin.home');
+    route::get('/','Admin\LoginController@logout')->name('admin.logout');
 
     Route::group(['prefix' => 'users'], function() {
-        Route::get('/{user}','UserController@index')->name('users.index');
+    Route::get('/','UserController@index')->name('users.index');
+
     });
 });

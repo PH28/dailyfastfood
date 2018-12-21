@@ -30,8 +30,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
 
-// Route::get('register', 'Auth\RegisterController@getRegister');
-// Route::post('register', 'Auth\RegisterController@postRegister');
+Route::get('register', [ 'as' => 'register', 'uses' => 'Auth\RegisterController@getRegister']);
+Route::post('register', [ 'as' => 'register', 'uses' => 'Auth\RegisterController@postRegister']);
 
 Route::get('/admin/login','Admin\LoginController@showLoginForm')->name('adminlogin');
 Route::post('/admin/login','Admin\LoginController@checkLogin')->name('adminlogin');
@@ -45,3 +45,4 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/{user}','UserController@index')->name('users.index');
     });
 });
+

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('contentadmin')
+@section('content')
 <div class="container">
 <div class="x_panel">
         <h2>create user</h2>
@@ -15,7 +15,7 @@
                 @endif
             <div class="dashboard-widget-content">
             <div class="col-md-9 hidden-small">
-                    <form action="{{route('users.store')}}"  method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.users.store')}}"  method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                           <div class="form-group">
                             <label for="first_name">First Name:</label>

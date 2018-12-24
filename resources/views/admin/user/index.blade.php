@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('contentadmin')
+@section('content')
 <div class="dashboard_graph pt-10">
 <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -9,7 +9,7 @@
             </div>
 			<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> </span>
-              <button type="button" class="btn btn-info btn-lg"><a href="{{route('users.create')}}">create</a></button>
+              <button type="button" class="btn btn-info btn-lg"><a href="{{route('admin.users.create')}}">create</a></button>
              
             </div>
             
@@ -35,10 +35,18 @@
 				<td>{{ $item->first_name }}</td>
 				<td>{{ $item->last_name }}</td>
 				<td>{{ $item->dob }}</td>
-                <td>{{ $item->gender }}</td>
+        <td>{{ $item->gender }}</td>
 				<td>{{ $item->email }}</td>
 				<td>{{ $item->phone }}</td>
 				<td>{{$item->role->name}}</td>
+        @if($user->id == $item->id)
+        <td><form action="{{route('admin.users.destroy', $item->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
+                                </td>
+         @endif                       
 
 				<td>
 					

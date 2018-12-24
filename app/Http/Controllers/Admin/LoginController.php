@@ -7,6 +7,7 @@ use Food\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Food\User;
 use Food\Category;
+use Food\Product;
 
 class LoginController extends Controller
 {
@@ -41,7 +42,8 @@ class LoginController extends Controller
         $user = Auth::user();
         if($user->role_id==1){
             $category= Category::pluck('name','id');
-            return view('admin.home',compact('user','category'));
+            $products=Product::paginate(10);
+            return view('admin.home',compact('user','category','products'));
         }else{
             return redirect()->route('adminlogin')->with('login_errors','bạn không phải là admin');;
         }

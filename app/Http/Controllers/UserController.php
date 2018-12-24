@@ -68,7 +68,7 @@ class UserController extends Controller
                     'avatar' =>$newFilename,
                     'role_id' => 1
                 ]);
-                return redirect()->route('users.index');
+                return redirect()->route('admin.users.index');
        } catch (Exception $e) {
 
         return redirect()->back()->with('message', 'Không thể thêm. Có lỗi');
@@ -118,7 +118,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {
-        //
+    {    $user = Auth::user();
+        $user->delete();
+        return redirect()->route('admin.users.index',compact('user'));
     }
 }

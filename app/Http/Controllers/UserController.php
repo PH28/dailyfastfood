@@ -6,6 +6,8 @@ use Food\User;
 use Food\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Food\Http\Requests\Admin\storeRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class UserController extends Controller
 {
@@ -19,8 +21,8 @@ class UserController extends Controller
         $user = Auth::user();
         $category= Category::pluck('name','id');
         $users = User::all();
-
-        return view('admin.indexUser',compact('users','user','category'));
+        $totalUser=User::where('role_id','2')->get()->count();
+        return view('admin.user.index',compact('users','user','category','totalUser'));
     }
 
     /**
@@ -30,7 +32,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $category= Category::pluck('name','id');
+        $users = User::all();
+        return view('admin.user.create',compact('users','user','category'));
     }
 
     /**
@@ -39,9 +44,37 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+       try {
+                if($request->hasFile('avata'))
+                {
+                    $file = $request->file('avata');
+                    $newFilename='images/users/'.rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                    $destinationPath = public_path('images/users');
+                    $file->move($destinationPath, $newFilename);
+                }else{
+                    $newFilename='';
+                }
+                 User::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'dob' => $request->dod,
+                    'gender' => $request->gender,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'avatar' =>$newFilename,
+                    'role_id' => 1
+                ]);
+                return redirect()->route('admin.users.index');
+       } catch (Exception $e) {
+
+        return redirect()->back()->with('message', 'Không thể thêm. Có lỗi');
+    
+    }
+
     }
 
     /**
@@ -85,7 +118,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {
-        //
+    {    $user = Auth::user();
+        $user->delete();
+        return redirect()->route('admin.users.index',compact('user'));
     }
 }

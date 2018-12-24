@@ -151,7 +151,7 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">ADMIN MANAGEMENT</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="#"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
         <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-edit"></i> <span>Categories</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>Products</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>Images</span></a></li>
@@ -183,7 +183,7 @@ desired effect
 
     </section> --}}
 
-    @yield('content');
+    @yield('content')
 
   </div>
   <!-- /.content-wrapper -->
@@ -193,18 +193,7 @@ desired effect
       
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
+
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->

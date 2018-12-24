@@ -45,6 +45,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     Route::group(['prefix' => 'users'], function() {
     Route::get('/','UserController@index')->name('users.index');
+    Route::get('/create','UserController@create')->name('users.create');
+    Route::post('/','UserController@store')->name('users.store');
+
 
     });
 });

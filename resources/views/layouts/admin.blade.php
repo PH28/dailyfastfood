@@ -37,7 +37,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('images/admin/a.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <h2>{{$user->first_name}}  {{$user->last_name}}</h2>
@@ -111,14 +111,14 @@
           <div class="nav_menu">
             <nav>
               <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                <a id="menu_toggle"><img src="{{asset('images/icon/menu_icon.png')}}" style="width: 3em; height: 3em;"><i class="fa fa-bars"></i></a>
               </div>
               <ul class="nav navbar-nav navbar-right">
                <li> 
                 <a href="{{route('admin.logout')}}" class="pull-right"><i class="fa fa-sign-out pull-right "></i> Log Out</a></li>
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/admin/a.jpg')}}" alt="">{{$user->first_name}} {{$user->last_name}}
+                    <img src="{{asset('$user->avatar')}}" alt="">{{$user->first_name}} {{$user->last_name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   
@@ -202,12 +202,12 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <!-- <footer>
+        <footer>
           <div class="pull-right">
             demo thanh thiên <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
-        </footer> -->
+        </footer>
         <!-- /footer content -->
       </div>
     </div>

@@ -1,255 +1,227 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  
-  <link href="{{asset('css/admin/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <!-- <link href="{{asset('css/admin/font-awesome.min.css')}}" rel="stylesheet"> -->
-    <!-- NProgress -->
-    <!-- <link href="{{asset('css/admin/nprogress.css')}}" rel="stylesheet"> -->
-    <!-- iCheck -->
-    <!-- <link href="{{asset('css/admin/green.css')}}" rel="stylesheet"> -->
-  
-    <!-- bootstrap-progressbar -->
-    <link href="{{asset('css/admin/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
-    <!-- JQVMap -->
-    <!-- <link href="{{asset('css/admin/jqvmap.min.css')}}" rel="stylesheet"/> -->
-    <!-- bootstrap-daterangepicker -->
-    <!-- <link href="{{asset('css/admin/daterangepicker.css')}}" rel="stylesheet"> -->
+  <title>AdminDFF | Starter</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/font-awesome/css/font-awesome.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/Ionicons/css/ionicons.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/skin-blue.min.css') }}">
 
-    <!-- Custom Theme Style -->
-    <link href="{{asset('css/admin/custom.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/_all-skins.min.css') }}">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index1.html" class="site_title"> <span>DailyFastFood!</span></a>
-            </div>
 
-            <div class="clearfix"></div>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <h2>{{$user->first_name}}  {{$user->last_name}}</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
+  <!-- Main Header -->
+  <header class="main-header">
 
-            <br>
+    <!-- Logo -->
+    <a href="{{ route ('admin.home') }}" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>FF</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Admin</b>DFF</span>
+    </a>
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section active">
-                <h3>General</h3>
-                <ul class="nav side-menu" style="">
-                  <li class=""><a><i class="fa fa-home"></i>Product<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="display: none;">
-                       @foreach ($category as $key => $value)
-                       <li><a href={{$key}}>{{$value}}</a></li>
-			                @endforeach
-                      <li class=><a href="abc">tất cả sản phẩm</a></li>
-                    </ul>
-                  </li>
-                  <li class=""><a href="form.html"><i class="fa fa-edit"></i> Category <span class="fa"></span></a>
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
 
-                  </li>
-                  <li class=""><a><i class="fa fa-desktop"></i> bill <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="display: none;">
-                      <li><a href="general_elements.html">bill chưa ktra</a></li>
-                      <li><a href="media_gallery.html">bill đang làm</a></li>
-                      <li><a href="typography.html">bill đã làm</a></li>
-                    </ul>
-                  </li>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="">
-                      <li><a href="chartjs.html">các thống kê</a></li>
-                      <li><a href="chartjs2.html">các thống kê</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="{{route('users.index')}}"><i class="fa fa-clone"></i>User <span class="fa "></span></a>
-                    
-                  </li>
-                </ul>
-              </div>
-              
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="" class="user-image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">Alexander Pierce</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="" class="img-circle">
 
-            </div>
-            <!-- /sidebar menu -->
-           
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="" href="login.html" data-original-title="Logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><img src="{{asset('images/icon/menu_icon.png')}}" style="width: 3em; height: 3em;"><i class="fa fa-bars"></i></a>
-              </div>
-              <ul class="nav navbar-nav navbar-right">
-               <li> 
-                <a href="{{route('admin.logout')}}" class="pull-right"><i class="fa fa-sign-out pull-right "></i> Log Out</a></li>
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('$user->avatar')}}" alt="">{{$user->first_name}} {{$user->last_name}}
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main" style="min-height: 1704px;">          
-        @yield('contentadmin')
-          
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            demo thanh thiên <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
 
-    <!-- jQuery -->
-    <script src="{{asset('js/admin/jquery.min.js')}}"></script>
-    <!-- Bootstrap -->
-    <script src="{{asset('js/admin/bootstrap.min.js')}}"></script>
-    <!-- FastClick -->
-    <script src="{{asset('js/admin/fastclick.js')}}"></script>
-     <script src="{{asset('js/admin/nprogress.js')}}"></script>
-    <!-- Chart.js -->
-    <!-- <script src="js/Chart.min.js"></script> -->
-    <!-- gauge.js -->
-    <script src="{{asset('js/admin/gauge.min.js')}}"></script>
-    <script src="{{asset('js/admin/bootstrap-progressbar.min.js')}}"></script>
-    <!-- iCheck -->
-    <script src="{{asset('js/admin/icheck.min.js')}}"></script>
-    <!-- Skycons -->
-    <script src="{{asset('js/admin/skycons.js')}}"></script>
-    <!-- Flot -->
-    <script src="{{asset('js/admin/jquery.flot.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.flot.time.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.flot.stack.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.flot.resize.js')}}"></script>
-    <!-- Flot plugins -->
-    <script src="{{asset('js/admin/jquery.flot.orderBars.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.flot.spline.min.js')}}"></script>
-    <script src="{{asset('js/admin/curvedLines.js')}}"></script>
-    <!-- DateJS -->
-    <script src="{{asset('js/admin/date.js')}}"></script>    
-    <!-- JQVMap -->
-    <script src="{{asset('js/admin/jquery.vmap.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.vmap.world.js')}}"></script>
-    <script src="{{asset('js/admin/jquery.vmap.sampledata.js')}}"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="{{asset('js/admin/moment.min.js')}}"></script>
-    <script src="{{asset('js/admin/daterangepicker.js')}}"></script>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
 
-    <!-- Custom Theme Scripts -->
-    <script src="{{asset('js/admin/custom.min.js')}}"></script>
-  
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+
+      </div>
+
+      <!-- search form (Optional) -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">ADMIN MANAGEMENT</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li><a href="#"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-edit"></i> <span>Categories</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Products</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Images</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Orders</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Discounts</span></a></li>
+        <li><a href="#"><i class="fa fa-edit"></i> <span>Comments</span></a></li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    {{-- <section class="content-header">
+      <h1>
+        Page Header
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+        <li class="active">Home</li>
+      </ol>
+    </section>
+
+ 
+    <section class="content container-fluid">
+
+    </section> --}}
+
+    @yield('content');
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+      
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="{{ asset('admin/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{ asset('admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
 </body>
 </html>

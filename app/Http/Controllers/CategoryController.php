@@ -4,6 +4,8 @@ namespace Food\Http\Controllers;
 
 use Food\Category;
 use Illuminate\Http\Request;
+use Food\Http\Requests\CategoryRequest;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('parent_id', NULL)->orderBy('id', 'asc')->paginate(10);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where('parent_id', NULL)->orderBy('id', 'asc')->get();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -33,9 +37,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = $request->all();
+        if (Category::create($category)) {
+            Session::flash('message', "Successfully created category");
+            return redirect()->route('admin.categories.index');
+
+        } else {
+            return redirect()->route('admin.categories.create');
+        }
     }
 
     /**

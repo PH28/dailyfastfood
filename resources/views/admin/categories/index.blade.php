@@ -34,6 +34,7 @@
 	                        <tr role="row">
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">ID</th>
 	                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">Name</th>
+	                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">SupCategory</th>
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Actions</th></tr>
 	                        </thead>
 	                        <tbody>

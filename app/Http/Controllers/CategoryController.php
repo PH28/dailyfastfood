@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('parent_id', NULL)->orderBy('id', 'asc')->paginate(10);
+        $categories = Category::all();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -27,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('parent_id', NULL)->orderBy('id', 'asc')->get();
-        return view('admin.categories.create', compact('categories'));
+        $categoryIds = Category::pluck('name', 'id');
+        return view('admin.categories.create', compact('categoryIds'));
     }
 
     /**

@@ -43,7 +43,7 @@ Route::group([
 		Route::resource('products', 'ProductController');
 
 		//user
-		Route::resource('user', 'UserController');
+		Route::resource('users', 'UserController');
 
 		//order
 		Route::resource('orders', 'OrderController');

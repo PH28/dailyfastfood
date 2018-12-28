@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-create product
+<div id="page-wrapper">
+<div class="container-fluid">
+ <h2>create product</h2>
 <div class="form-group row">
      <label  class="col-md-4 col-form-label text-md-right"></label>
 
@@ -16,50 +18,68 @@ create product
         </div>
     </div>
 <div class="row">
+
+<div class="col-lg-7" >
+
     <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
-      <label style="padding: 20px">Name</label>
-      <input type="text" name="name" value="">
+    <div class="form-group" >
+      <label >Name</label>
+      <input type="text" name="name" value="" class="form-control">
       @if ($errors->has('name'))
+      <div class="text-danger">
          <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('name') }}</strong>
-        </span>
-              @endif
-      <label style="padding: 20px">descripttion</label>
-      <textarea rows="4" cols="50" name="description">
+        </span></div>
+        @endif
+        </div>
+        <div class="form-group" >
+      <label>descripttion</label>
+      <textarea rows="4" cols="50" name="description"  class="form-control">
       </textarea>
-      @if ($errors->has('description'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('description') }}</strong>
-                </span>
-                                @endif
-      <label style="padding: 20px">price</label>
-      <input type="number" name="price" value="">
+     
+       </div>  
+          <div class="form-group" >                   
+      <label>price</label>
+      <input type="number" name="price" value=""  class="form-control">
       @if ($errors->has('price'))
+      <div class="text-danger">
               <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('price') }}</strong>
-                 </span>
+                 </span></div>
          @endif
-      <label style="padding: 20px">quantity</label>
-      <input type="number" name="quantity" value="">
+         </div>
+       <div class="form-group">   
+      <label >quantity</label>
+      <input type="number" name="quantity"  class="form-control" value="">
       @if ($errors->has('quantity'))
+      <div class="text-danger">
+      
              <span class="invalid-feedback" role="alert">
               <strong>{{ $errors->first('quantity') }}</strong>
-            </span>
+            </span></div>
         @endif
-      
-      <label style="padding: 20px">categoryid</label>
-      <select name="category_id"> 
+        </div> 
+      <label >categoryid</label>
+      <select name="category_id"  class="form-control"> 
       @foreach ($category as $key => $value)
       @if($key!=1 && $key!=2)
-        <option value="{{$key}}">{{$value}}</option>
+        <option value="{{$key}}" >{{$value}}</option>
         @endif 
       @endforeach
       </select>
-      <input type="file" class="form-control"  name="image[]" multiple>
-      <button type="submit">Create</button>
+      <label>Image</label>
+      <input type="file"  class="form-control"  name="image[]" multiple>
+      <div class="form-group ">
+                   <button type="submit" class="btn btn-success">
+                       <i class="fa fa-save"></i>
+                       <span>Add and save</span>
+                   </button>
+               </div>
+      </div>
     </form>
 
   </div>
-
+  </div>
+</div>
 @endsection

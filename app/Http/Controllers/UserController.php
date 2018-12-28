@@ -4,6 +4,8 @@ namespace Food\Http\Controllers;
 
 use Food\User;
 use Food\Category;
+use Food\Order;
+use Food\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Food\Http\Requests\Admin\storeRequest;
@@ -46,11 +48,13 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        dd($request);
        try {
                 if($request->hasFile('avata'))
                 {
                     $file = $request->file('avata');
                     $newFilename='images/users/'.rand(11111, 99999) . '.' . $file->getClientOriginalExtension();
+                    // $newFilename='images/users/'. $request->last_name. '.' . $file->getClientOriginalExtension();
                     $destinationPath = public_path('images/users');
                     $file->move($destinationPath, $newFilename);
                 }else{
@@ -68,7 +72,7 @@ class UserController extends Controller
                     'avatar' =>$newFilename,
                     'role_id' => 1
                 ]);
-                return redirect()->route('admin.users.index');
+                return redirect()->route('admin.users.index')->with('message',('create success product'. $request->last_name));
        } catch (Exception $e) {
 
         return redirect()->back()->with('message', 'Không thể thêm. Có lỗi');
@@ -121,5 +125,36 @@ class UserController extends Controller
     {    $user = Auth::user();
         $user->delete();
         return redirect()->route('admin.users.index',compact('user'));
+    }
+    public function userInfomation($id){
+        $user =Auth::user();
+        $users=User::with('orders')->where('id',$id)->first();
+        
+       //dd($users);
+        return view('admin.user.infomation',compact('users','user'));
+        
+    }
+    public function userInfomationbyoderdeatil($id){
+        $user =Auth::user();
+
+        $order =Order::with('orderDetails')->where('id',$id)->first();
+        $order_detail=[];
+        foreach($order->orderDetails as $key => $value){
+            
+           $id_products=$value->product_id;
+           $products=Product::find($id_products);
+           $data=[
+               'name_product'=>$products->name,
+                'quantity'=>$value->quantity,
+                'price'=>$products->price * $value->quantity,
+           ];
+           array_push($order_detail,$data);
+        }
+      
+     // dd($order_detail);
+        return view('admin.user.orderDetails',compact('user','order','order_detail'));
+
+        
+
     }
 }

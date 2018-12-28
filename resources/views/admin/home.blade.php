@@ -9,55 +9,74 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li class="active">Home</li>
       </ol>
-      
-    </section>
-    <a href="{{route('admin.products.create')}}">create</a>
-    <div class="x_content">
-        <div class="table-responsive">
-            <table class="table table-striped jambo_table bulk_action">
-                <thead>
-                <tr class="headings">
-                <th>
-                 <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                </th>
-                <th class="column-title"> tên  </th>
-                <th class="column-title">giá </th>
-                <th class="column-title">số lượng </th>
-                <th class="column-title">miêu tả </th>
-                <th class="column-title">Điện thoại </th>
-                <th class="column-title no-link last"><span class="nobr">Action</span>
-                </th>
-                <th class="bulk-actions" colspan="7">
-                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
-                 </tr>
-            </thead>
+     </section> 
+    <section class="content">
+    <a href="{{ route('admin.products.create') }}" class="btn btn-success">
+	        <i class="fa fa-plus"></i>
+	        <span>Add Product</span>
+	</a>
+    <p style="height: 5px"></p>
+
+        @if (Session::has('message'))
+	        <div class="alert alert-info"> {{ Session::get('message') }}</div>
+	    @endif
+		@if (Session::has('success'))
+	        <div class="alert alert-info"> {{ Session::get('success') }}</div>
+	    @endif
+      <input type="text" id="myInput" onkeyup="searchByColumnNo('1')" placeholder="Search for names.." class="form-control">  
+      <div class="box">
+	        <div class="box-header with-border">
+	            <div class="row">
+	                <div class="col-sm-12">
+        
+            <table id="myTable" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+
+            <thead >
+	                        <tr role="row">
+	                            <th class="sorting"  aria-controls="example2" rowspan="1" colspan="1" aria-label="">Name</th>
+	                            <th class="sorting_asc">Price</th>
+								<th class="sorting">quantity</th>
+								<th>image</th>
+								<th>detail</th>
+								<th colspan="2" >action</th>
+								</tr>
+	                        </thead>
 
                         <tbody>
 						@foreach( $products as $item)
 		 					
                           <tr class="even pointer">
-<td class="a-center ">
-                              <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="flat" name="table_records" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                            </td>
+                    
                             <td class=" ">{{ $item->name }}</td>
-                            <td class=" ">{{ $item->price }} </td>
+                            <td class=" ">{{number_format($item->price)}} VND </td>
                             <td class=" ">{{ $item->quantity }}</td>
-                            <td> {{ $item->description }}</td>
+							<td> @foreach($item->images as $item1)
+                                <img src="{!! url($item1->path) !!}" width="100"  height="80" alt="">
+								
+                                @endforeach </td>
+                            <td><a  href="{{route('admin.products.detail',$item->id)}}"><i class="fa fa-eye" style="font-size:20px;"></i></a> </td>
                             <!-- <td class=" ">{{ $item->category_id }}</td> -->
-                            <td><a href="{{route('admin.products.edit',$item->id)}}">Edit</a></td>
-                            <td><form action="{{route('admin.products.destroy', $item->id)}}" method="POST">
+                            <td><a href="{{route('admin.products.edit',$item->id)}}" class="btn btn-default bg-purple"><i class="fa fa-edit"></i>Edit</a></td>
+                            <td><form action="{{route('admin.products.destroy', $item->id)}}" method="POST" id="formDelete">
                                 @csrf
                                 @method('DELETE')
-                                    <button type="submit">Delete</button>
-                                </form></td>
+                                    <button type="submit" class="btn btn-default bg-red btnDelete" onclick="return confirm('Bạn có chắc chắn muốn xóa!')"><i class="fa fa-trash "></i>Delete</button>
+                                </form>
+
+                                </td>
                           </tr>	
 						@endforeach
                         
                                             
 </tbody>
                       </table>
+                    
                     </div>
+	            </div>
+	        </div>
+            
+
+	    </div>    
 					<div class="dataTables_paginate paging_simple_numbers" id="datatable-buttons_paginate">
 					<ul class="pagination">
 						@if($products->currentPage() !=1)
@@ -79,8 +98,11 @@
 							</div>
                </div>	
  
-    <section class="content container-fluid">
+    
 
     </section>
-
+    <a href="" class="btn btn-default bg-purple">
+	                                                <i class="fa fa-edit"></i>
+	                                                <span>Edits</span>
+	                                            </a>
 @endsection

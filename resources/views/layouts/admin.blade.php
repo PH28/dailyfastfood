@@ -84,18 +84,18 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="" class="user-image">
+              <img src="{!! url($user->avatar) !!}" class="user-image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{$user->first_name}}  {{$user->last_name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="" class="img-circle">
+                <img src="{!! url($user->avatar) !!}" class="img-circle">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                {{$user->first_name}}  {{$user->last_name}} 
+                  <small>Member since Nov. 2018</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -126,10 +126,11 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="" class="img-circle" alt="User Image">
+          <img src="{!! url($user->avatar) !!}" class="img-circle" alt="User Image">
+
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{$user->first_name}}  {{$user->last_name}} </p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -153,9 +154,9 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
         <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-edit"></i> <span>Categories</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Products</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Images</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Orders</span></a></li>
+        <li><a href="{{route('admin.home')}}"><i class="fa fa-list-alt"></i> <span>Products</span></a></li>
+        <li><a href="#"><i class="fa fa-picture-o"></i> <span>Images</span></a></li>
+        <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-edit"></i> <span>Orders</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>Discounts</span></a></li>
         <li><a href="#"><i class="fa fa-edit"></i> <span>Comments</span></a></li>
       </ul>
@@ -203,7 +204,7 @@ desired effect
 <!-- jQuery 3 -->
 <script src="{{ asset('admin/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
 

@@ -6,6 +6,7 @@ use Food\Category;
 use Food\Image;
 use Food\Product;
 use Illuminate\Http\Request;
+use Food\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -38,8 +39,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
+        
         try { 
             $imageData=[];
            if($request->hasFile('image'))
@@ -77,7 +79,7 @@ class ProductController extends Controller
                //dd($iten);
                Image::create($iten);
            }
-           return redirect()->route('admin.home');
+           return redirect()->route('admin.home')->with('success',('create success product'. $request->name));
       } catch (Exception $e) {
        return redirect()->back()->with('message', 'Không thể thêm. Có lỗi');
       }
@@ -91,7 +93,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -132,6 +134,13 @@ class ProductController extends Controller
         $product->images()->delete();
         
         $product->delete();
-        return redirect()->route('admin.home');
+        return back()->with('message',('Delete success'));
+        // return redirect()->route('admin.home');
+    }
+    public function detailProduct($id)
+    { $user = Auth::user();
+        $product=Product::with('images')->where('id',$id)->first() ;
+       
+        return view('admin.product.detail',compact('product','user'));
     }
 }

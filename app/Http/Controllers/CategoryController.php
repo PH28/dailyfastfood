@@ -6,6 +6,7 @@ use Food\Category;
 use Illuminate\Http\Request;
 use Food\Http\Requests\CategoryRequest;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {

@@ -29,7 +29,7 @@ Route::get('/admin/login','Admin\LoginController@showLoginForm')->name('adminlog
 Route::post('/admin/login','Admin\LoginController@checkLogin')->name('adminlogin');
 
 Route::group([
-		'middleware' => ['auth', 'is.admin'],
+		'middleware' => ['admin'],
 		'prefix' => 'admin',
 		'as' => 'admin.'
 	], function(){
@@ -41,12 +41,16 @@ Route::group([
 
 		//products
 		Route::resource('products', 'ProductController');
+		Route::get('products/{id}/detail', 'ProductController@detailProduct')->name('products.detail');
 
 		//user
 		Route::resource('users', 'UserController');
+		Route::get('users/{id}/infomation', 'UserController@userInfomation')->name('users.infomation');
+		Route::get('users/{id}/oderdetail', 'UserController@userInfomationbyoderdeatil')->name('users.oderdeatil');
 
 		//order
 		Route::resource('orders', 'OrderController');
+		Route::get('orders/{id}/status', 'OrderController@checkStatus')->name('orders.check');
 
 		//comments
 		Route::resource('comments', 'CommentController');

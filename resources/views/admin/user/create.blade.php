@@ -36,9 +36,9 @@
                           @endif
                           <ul class="gendercheck">
                               
-                                  <input type="radio" id="male" value="male" name="gender" checked>
+                                  <input type="radio" id="male" value="1" name="gender" checked>
                                   <label for=""><span></span>MALE</label>
-                                  <input type="radio" id="female" value="female" name="gender">
+                                  <input type="radio" id="female" value="2" name="gender">
                                   <label for=""><span></span>FEMALE</label>
                               
                           </ul>
@@ -50,7 +50,7 @@
                             @endif
                           </div>
                           <div class="form-group">
-                            <label for="dod">Phone Number</label>:</label>
+                            <label for="dod">birthday </label>:</label>
                             <input type="date" class="form-control" placeholder="ngày sinh" name="dod">
                             @if ($errors->has('dod'))
                             <p class="text-danger">{{ $errors->first('dod') }}</p>

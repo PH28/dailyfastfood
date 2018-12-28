@@ -46,9 +46,9 @@ Route::group([
 		//user
 		Route::resource('users', 'UserController');
 		Route::get('users/{id}/infomation', 'UserController@userInfomation')->name('users.infomation');
-		Route::get('users/{id}/oderdetail', 'UserController@userInfomationbyoderdeatil')->name('users.oderdeatil');
+		Route::get('users/{id}/oderdetail', 'UserController@userInfomationByOrderDeatil')->name('users.orderdeatil');
 
-		//order
+		//orderso 
 		Route::resource('orders', 'OrderController');
 		Route::get('orders/{id}/status', 'OrderController@checkStatus')->name('orders.check');
 

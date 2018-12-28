@@ -50,8 +50,8 @@ class ProductController extends Controller
                foreach(request()->file('image') as $key => $value ){
                    $filename = $value->getClientOriginalExtension();
                    
-                   $newFilename= '/public/images/foods/'.$request->name.rand(11111, 99999). '.' . $value->getClientOriginalExtension();
-                   $destinationPath = public_path('/public/images/foods');
+                   $newFilename= 'images/foods/'.$request->name.rand(11111, 99999). '.' . $value->getClientOriginalExtension();
+                   $destinationPath = public_path('images/foods');
                    $value->move($destinationPath, $newFilename);
                   // array_push();
                    $data=[
@@ -118,8 +118,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $Products= Product::find($product->id);
-        $Products->update($request->all());
+        $product->update($request->all());
         return redirect()->route('admin.home');
     }
 

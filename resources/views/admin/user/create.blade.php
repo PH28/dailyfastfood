@@ -50,10 +50,10 @@
                             @endif
                           </div>
                           <div class="form-group">
-                            <label for="dod">birthday </label>:</label>
-                            <input type="date" class="form-control" placeholder="ngày sinh" name="dod">
-                            @if ($errors->has('dod'))
-                            <p class="text-danger">{{ $errors->first('dod') }}</p>
+                            <label for="dob">birthday </label>:</label>
+                            <input type="date" class="form-control" placeholder="ngày sinh" name="dob">
+                            @if ($errors->has('dob'))
+                            <p class="text-danger">{{ $errors->first('dob') }}</p>
                             @endif
                           </div>
                       

@@ -7,6 +7,9 @@ use Food\OrderDetail;
 use Food\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Food\Mail\OrderFeedback;
+use Illuminate\Support\Facades\Mail;
+
 
 class OrderController extends Controller
 {
@@ -92,20 +95,11 @@ class OrderController extends Controller
         //
     }
     public function checkStatus($id){
-        try {
+         try {
+            
             $order = Order::find($id);
-            if($order->status==1){
-             return back()->with('message', ('order này đã check rồi'));
-            }
-            else{
+            
                 $order_detail=OrderDetail::with('product')->where('order_id',$id)->get();
-                //đi từng order_detail để xem có lỗi quantity ko
-                foreach($order_detail as $key=>$value){
-                    if($value->product->quantity < $value->quantity){
-                        return back()->with('message', ('kiểm tra số lương '.$value->product->name.' vượt quá số lượng khác hàng yêu cầu'));
-                    }
-                   
-                }
 
                 foreach($order_detail as $key=>$value){
                     
@@ -115,9 +109,28 @@ class OrderController extends Controller
                             ->update(['quantity' =>  $product_update]);
                 }
                 Order::where('id',$id)->update(['status'=>1]);
-                return back()->with('success', ('check order thành công'));
+              
+                $order_mail =Order::with('orderDetails','user')->where('id',$id)->first();
+                $order_detail=[];
+                        foreach($order_mail->orderDetails as $key => $value){
+                            
+                        $id_products=$value->product_id;
+                        $products=Product::find($id_products);
+                        $data=[
+                            'name_product'=>$products->name,
+                                'quantity'=>$value->quantity,
+                                'price'=>$products->price * $value->quantity,
+                        ];
+                        array_push($order_detail,$data);
+                        
+                        }
+                        $data_user=$order_mail->user;
+                        // dd($order_detail);
+               //dd($order_mail);
+                Mail::to($data_user->email)->send(new OrderFeedback($data_user, $order_detail,$order_mail));
+                return back()->with('success', ('cập nhật trạng thái order thành công'));
                 
-            }
+        
         } catch (\Exception $e) {
             return back()->with('message',$e->getMessage());
        }

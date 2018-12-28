@@ -42,9 +42,9 @@ class LoginController extends Controller
     public function home(){
         $user = Auth::user();
         if($user->role_id==1){
-            $category= Category::pluck('name','id');
+           
             $products=Product::with('images')->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->paginate(10);
-            return view('admin.home',compact('user','category','products'));
+            return view('admin.home',compact('products'));
         }else{
             return redirect()->route('adminlogin')->with('login_errors','bạn không phải là admin');;
         }

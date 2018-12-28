@@ -57,7 +57,7 @@
 						<td>{{$item->phone}}</td>
 						<td>{{$item->date}}</td>
 						<td>{{$item->total_price}}</td>
-						<td><a href="{{route('admin.users.oderdeatil',$item->id)}}">detail</a></td>
+						<td><a href="{{route('admin.users.orderdeatil',$item->id)}}">detail</a></td>
 						</tr>
 						@endforeach
 						</table>

@@ -31,7 +31,7 @@
                    <div class="form-group col-md-12">
                        <label>SupCategory</label>
                        <select class="form-control" name="parent_id"  value="{{ old('parent_id') }}">
-                       	<option value="0">---Select SupCategory</option>
+                       	<option value="">---Select SupCategory</option>
                            @foreach($categories as $cate)
                            	<option value="{{ $cate->id }}">{{ $cate->name }}</option>
                            @endforeach

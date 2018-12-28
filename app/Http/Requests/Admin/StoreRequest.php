@@ -32,6 +32,7 @@ class StoreRequest extends FormRequest
             'phone' => 'required|min:10|max:11',
             'address' => 'required|max:255',
             'avatar' => 'nullable',
+            'dob'=>'required',
         ];
     }
     public function messages()
@@ -45,6 +46,7 @@ class StoreRequest extends FormRequest
             'password.required' => 'Vui lòng nhập mật khẩu',
             'phone.min' => 'Tối thiểu 10 kí tự',
             'phone.max' => 'vui lòng nhập số điện thoại',
+            'dob.reqiured'=>'bạn phải nhập ngày sinh',
         ];
     }
 }

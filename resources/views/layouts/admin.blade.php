@@ -84,17 +84,17 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{!! url($user->avatar) !!}" class="user-image">
+              <img src="{!! url(Auth::user()->avatar) !!}" class="user-image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{$user->first_name}}  {{$user->last_name}}</span>
+              <span class="hidden-xs">{{Auth::user()->first_name}}  {{Auth::user()->last_name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{!! url($user->avatar) !!}" class="img-circle">
+                <img src="{!! url(Auth::user()->avatar) !!}" class="img-circle">
 
                 <p>
-                {{$user->first_name}}  {{$user->last_name}} 
+                {{Auth::user()->first_name}}  {{Auth::user()->last_name}} 
                   <small>Member since Nov. 2018</small>
                 </p>
               </li>
@@ -126,11 +126,11 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{!! url($user->avatar) !!}" class="img-circle" alt="User Image">
+          <img src="{!! url(Auth::user()->avatar) !!}" class="img-circle" alt="User Image">
 
         </div>
         <div class="pull-left info">
-          <p>{{$user->first_name}}  {{$user->last_name}} </p>
+          <p>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>

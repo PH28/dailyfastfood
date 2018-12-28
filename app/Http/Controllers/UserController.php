@@ -20,11 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $category= Category::pluck('name','id');
         $users = User::all();
         $totalUser=User::where('role_id','2')->get()->count();
-        return view('admin.user.index',compact('users','user','category','totalUser'));
+        return view('admin.user.index',compact('users','totalUser'));
     }
 
     /**
@@ -34,10 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $category= Category::pluck('name','id');
         $users = User::all();
-        return view('admin.user.create',compact('users','user','category'));
+        return view('admin.user.create',compact('users'));
     }
 
     /**
@@ -48,7 +44,7 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        dd($request);
+       
        try {
                 if($request->hasFile('avata'))
                 {
@@ -60,18 +56,12 @@ class UserController extends Controller
                 }else{
                     $newFilename='';
                 }
-                 User::create([
-                    'first_name' => $request->first_name,
-                    'last_name' => $request->last_name,
-                    'dob' => $request->dod,
-                    'gender' => $request->gender,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'phone' => $request->phone,
-                    'address' => $request->address,
-                    'avatar' =>$newFilename,
-                    'role_id' => 1
-                ]);
+                $data=$request->all();
+                $data['role_id'] =1;
+                $data['avatar']=$newFilename;
+                $data['password']= bcrypt($request->password);
+                User::create($data);
+               
                 return redirect()->route('admin.users.index')->with('message',('create success product'. $request->last_name));
        } catch (Exception $e) {
 
@@ -122,20 +112,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {    $user = Auth::user();
-        $user->delete();
-        return redirect()->route('admin.users.index',compact('user'));
+    {    
+       
     }
     public function userInfomation($id){
-        $user =Auth::user();
+        
         $users=User::with('orders')->where('id',$id)->first();
         
        //dd($users);
-        return view('admin.user.infomation',compact('users','user'));
+        return view('admin.user.infomation',compact('users'));
         
     }
-    public function userInfomationbyoderdeatil($id){
-        $user =Auth::user();
+    public function userInfomationByOrderDeatil($id){
 
         $order =Order::with('orderDetails')->where('id',$id)->first();
         $order_detail=[];
@@ -152,7 +140,7 @@ class UserController extends Controller
         }
       
      // dd($order_detail);
-        return view('admin.user.orderDetails',compact('user','order','order_detail'));
+        return view('admin.user.orderDetails',compact('order','order_detail'));
 
         
 

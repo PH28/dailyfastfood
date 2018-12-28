@@ -71,11 +71,13 @@
 						<td>{{$item->phone}}</td>
 						<td>{{$item->date}}</td>
 						<td>{{number_format($item->total_price)}} VN</td>
-						<td><a href="{{route('admin.users.oderdeatil',$item->id)}}">detail</a></td>
+						<td><a href="{{route('admin.users.orderdeatil',$item->id)}}">detail</a></td>
 						@if($item->status==1)
-						<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-success">Success</button></a></td>
+						<!-- <td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-success">Success</button></a></td> -->
+						<td>đã hoàn thành</td>
 						@else
 						<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-warning">Warning</button></a></td>
+						
 						@endif
 						</tr>
 						@endforeach

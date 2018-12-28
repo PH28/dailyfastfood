@@ -63,14 +63,7 @@
 				<td>{{ $item->email }}</td>
 				<td>{{ $item->phone }}</td>
 				<td>{{$item->role->name}}</td>
-        <!-- @if($user->id == $item->id)
-        <td><form action="{{route('admin.users.destroy', $item->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                    <button type="submit">Delete</button>
-                                </form>
-                                </td>
-         @endif                        -->
+       
 
 				<td>
 					

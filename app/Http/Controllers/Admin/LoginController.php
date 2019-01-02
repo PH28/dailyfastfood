@@ -7,6 +7,8 @@ use Food\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Food\User;
 use Food\Category;
+use Food\Product;
+use Food\Image;
 
 class LoginController extends Controller
 {
@@ -31,7 +33,7 @@ class LoginController extends Controller
             if(Auth::user()->role_id == 1){
                return redirect()->route('admin.home');
             }else{
-                echo 'đay là trang của user';
+                return redirect()->back()->with('login_errors', 'Không phải tài khoảng Admin');
             }
         }else{
             return redirect()->back()->with('login_errors', 'Đăng nhập thất bại. Vui lòng kiểm tra lại');
@@ -40,8 +42,9 @@ class LoginController extends Controller
     public function home(){
         $user = Auth::user();
         if($user->role_id==1){
-            $category= Category::pluck('name','id');
-            return view('admin.home',compact('user','category'));
+           
+            $products=Product::with('images')->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+            return view('admin.home',compact('products'));
         }else{
             return redirect()->route('adminlogin')->with('login_errors','bạn không phải là admin');;
         }

@@ -87,14 +87,14 @@
                 @if( $errors->has('gender'))
                     <p>{{$errors->first('gender')}}</p>
                 @endif
-                <ul class="gendercheck">
-                    <li>
+                
+                    
                         <input type="radio" id="male" value="1" name="gender" checked>
                         <label for=""><span></span>MALE</label>
                         <input type="radio" id="female" value="2" name="gender">
                         <label for=""><span></span>FEMALE</label>
-                    </li>
-                </ul>
+                   
+               
 
                 @if( $errors->has('email'))
                     <p>{{$errors->first('email')}}</p>

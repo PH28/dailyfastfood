@@ -41,6 +41,10 @@
                    <div class="form-group{{ $errors->has('parent_id') ? ' has-error' : '' }} col-md-12">
                        <label>SupCategory</label>
                        <select class="form-control" name="parent_id"  value="{{ old('parent_id') }}">
+<<<<<<< HEAD
+=======
+                       	<option value="">---Select SupCategory</option>
+>>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
                            @foreach($categories as $cate)
                             <option value="{{ $cate->id }}">{{ $cate->name }}</option>
                            @endforeach

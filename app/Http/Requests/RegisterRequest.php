@@ -39,14 +39,17 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'first_name.max' => 'Vượt quá 255 kí tự',
-            'email.reqiured' => 'Vui lòng nhập Email',
-            'email.email' => 'Email không đúng định dạng',
-            'email.unique' => 'Email đã tồn tại',
-            'password.required' => 'Vui lòng nhập mật khẩu',
-            'password.confirmed' => 'Xác nhận mật khẩu không đúng',
-            'phone.min' => 'Tối thiểu 10 kí tự',
-            'address.max' => 'Vượt quá 255 kí tự'
+            'first_name.required' => 'Please enter first name',
+            'first_name.max' => 'Max 255 characters',
+            'last_name.required' => 'Please enter last name',
+            'last_name.max' => 'Max 255 characters',
+            'email.reqiured' => 'Please enter email address',
+            'email.email' => 'Incorrect email format',
+            'email.unique' => 'Email already exists',
+            'password.required' => 'Please enter password',
+            'password.confirmed' => 'Confirm password is invalid',
+            'phone.min' => 'Min 10 characters',
+            'address.max' => 'Max 255 characters'
         ];
     }
 }

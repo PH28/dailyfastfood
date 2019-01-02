@@ -3,7 +3,9 @@
 namespace Food\Http\Controllers;
 
 use Food\Discount;
+use Food\Product;
 use Illuminate\Http\Request;
+use Food\Http\Requests\DiscountRequest;
 
 class DiscountController extends Controller
 {
@@ -14,7 +16,8 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        $discounts = Discount::with('product')->get();
+        return view('admin.discounts.index', compact('discounts'));
     }
 
     /**
@@ -24,7 +27,8 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        $productIds = Product::orderBy('id', 'desc')->pluck('name', 'id');
+        return view('admin.discounts.create', compact('productIds'));
     }
 
     /**
@@ -33,9 +37,15 @@ class DiscountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiscountRequest $request)
     {
-        //
+        $discount = $request->all();
+
+        if (Discount::create($discount)) {
+            return redirect()->route('admin.discounts.index')->with('message', 'Successfully created discount');
+        } else {
+            return redirect()->route('admin.discounts.create');
+        }
     }
 
     /**
@@ -57,7 +67,8 @@ class DiscountController extends Controller
      */
     public function edit(Discount $discount)
     {
-        //
+        $productIds = Product::orderBy('id', 'desc')->pluck('name', 'id');
+        return view('admin.discounts.edit', compact('discount', 'productIds'));
     }
 
     /**
@@ -67,9 +78,14 @@ class DiscountController extends Controller
      * @param  \Food\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discount $discount)
+    public function update(DiscountRequest $request, Discount $discount)
     {
-        //
+        $data = $request->all();
+        if($discount->update($data)) {
+            return redirect()->route('admin.discounts.index')->with('message', 'Successfully updated discount');
+        } else {
+            return redirect()->back()->with('error', 'Update failed');
+        }
     }
 
     /**
@@ -78,8 +94,13 @@ class DiscountController extends Controller
      * @param  \Food\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Discount $discount)
+    public function destroy($id)
     {
-        //
+        $discount = Discount::find($id);
+        if($discount->delete()) {
+            return redirect()->back()->with('message', 'Successfully deleted');
+        }
+        
+        return redirect()->back()->with('error', 'Delete failed');
     }
 }

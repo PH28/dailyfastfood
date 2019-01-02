@@ -15,6 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('admin/bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('admin/bower_components/Ionicons/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -104,14 +106,10 @@ desired effect
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -153,12 +151,12 @@ desired effect
         <li class="header">ADMIN MANAGEMENT</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
-        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-edit"></i> <span>Categories</span></a></li>
-        <li><a href="{{route('admin.home')}}"><i class="fa fa-list-alt"></i> <span>Products</span></a></li>
-        <li><a href="#"><i class="fa fa-picture-o"></i> <span>Images</span></a></li>
-        <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-edit"></i> <span>Orders</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Discounts</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Comments</span></a></li>
+        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
+        <li><a href="{{route('admin.home')}}"><i class="fa fa-cubes"></i> <span>Products</span></a></li>
+        <li><a href="#"><i class="fa  fa-file-photo-o"></i> <span>Images</span></a></li>
+        <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-cart-plus"></i> <span>Orders</span></a></li>
+        <li><a href="{{ route('admin.discounts.index') }}"><i class="fa  fa-balance-scale"></i> <span>Discounts</span></a></li>
+        <li><a href="#"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -187,6 +185,7 @@ desired effect
     @yield('content')
 
   </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
@@ -202,11 +201,33 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="{{ asset('admin/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<<<<<<< HEAD
+<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
+<script src="{{ asset('admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+=======
+>>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+<script>
+    $(function() {
+        $('#example1').DataTable()
+
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('yyyy/mm/dd', { 'placeholder': 'yyyy/mm/dd' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+    });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

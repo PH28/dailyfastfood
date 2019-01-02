@@ -32,9 +32,11 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên thể loại',
-            'name.min' => 'Tên có ít nhất 2 kí tự',
-            'name.unique' => 'Tên đã tồn tại'
+
+            'name.required' => 'Please enter category name',
+            'name.min' => 'Category name min 2 characters',
+            'name.unique' => 'Category name already exists'
+
         ];
     }
 }

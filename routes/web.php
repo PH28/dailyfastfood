@@ -12,12 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('users.index');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
@@ -33,11 +31,14 @@ Route::group([
 		'prefix' => 'admin',
 		'as' => 'admin.'
 	], function(){
-		//home
+		//home, logout
 		Route::get('/home', 'Admin\LoginController@home')->name('home');
+		Route::get('/logout', 'Admin\LoginController@logout')->name('logout');
 
 		//categories
 		Route::resource('categories', 'CategoryController');
+		Route::get('/categories/{id}/subcategory', 'CategoryController@showSubcategory')->name('categories.subcategory');
+		Route::get('/categories/{id}/delete', 'CategoryController@destroy')->name('categories.destroy');
 
 		//products
 		Route::resource('products', 'ProductController');
@@ -45,8 +46,11 @@ Route::group([
 
 		//user
 		Route::resource('users', 'UserController');
+
+
 		Route::get('users/{id}/infomation', 'UserController@userInfomation')->name('users.infomation');
 		Route::get('users/{id}/oderdetail', 'UserController@userInfomationByOrderDeatil')->name('users.orderdeatil');
+
 
 		//orderso 
 		Route::resource('orders', 'OrderController');
@@ -60,5 +64,20 @@ Route::group([
 
 		//discounts
 		Route::resource('discounts', 'DiscountController');
+		Route::get('/discounts/{id}/delete', 'DiscountController@destroy')->name('discounts.destroy');
 });
 
+Route::group(['namespace' => 'Users', 'as' => 'users.'], function() {
+	Route::get('/index', 'UsersController@getIndex')->name('index');
+	Route::get('/category/{id}', 'UsersController@getCategory')->name('category');
+	Route::get('/product/{id}', 'UsersController@getProduct')->name('product');
+	Route::get('/contact', 'UsersController@getContact')->name('contact');
+	Route::get('/about', 'UsersController@getAbout')->name('about');
+	Route::get('/add-to-cart/{id}', 'UsersController@getAddtocart')->name('addcart');
+});
+
+Route::group([
+		'middleware' => ['auth', 'is.user']
+	], function(){
+		Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+	});

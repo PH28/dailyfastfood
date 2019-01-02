@@ -4,11 +4,8 @@ use Food\Category;
 use Illuminate\Http\Request;
 use Food\Http\Requests\CategoryRequest;
 use Session;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Auth;
 
->>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
 class CategoryController extends Controller
 {
     /**

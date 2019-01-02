@@ -46,11 +46,11 @@ Route::group([
 
 		//user
 		Route::resource('users', 'UserController');
-<<<<<<< HEAD
-=======
+
+
 		Route::get('users/{id}/infomation', 'UserController@userInfomation')->name('users.infomation');
 		Route::get('users/{id}/oderdetail', 'UserController@userInfomationByOrderDeatil')->name('users.orderdeatil');
->>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
+
 
 		//orderso 
 		Route::resource('orders', 'OrderController');

@@ -150,23 +150,13 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">ADMIN MANAGEMENT</li>
         <!-- Optionally, you can add icons to the links -->
-<<<<<<< HEAD
-        <li><a href="#"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
         <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-list"></i> <span>Categories</span></a></li>
-        <li><a href="#"><i class="fa fa-cubes"></i> <span>Products</span></a></li>
+        <li><a href="{{route('admin.home')}}"><i class="fa fa-cubes"></i> <span>Products</span></a></li>
         <li><a href="#"><i class="fa  fa-file-photo-o"></i> <span>Images</span></a></li>
-        <li><a href="#"><i class="fa fa-cart-plus"></i> <span>Orders</span></a></li>
+        <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-cart-plus"></i> <span>Orders</span></a></li>
         <li><a href="{{ route('admin.discounts.index') }}"><i class="fa  fa-balance-scale"></i> <span>Discounts</span></a></li>
         <li><a href="#"><i class="fa fa-comments"></i> <span>Comments</span></a></li>
-=======
-        <li><a href="{{ route('admin.users.index') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
-        <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-edit"></i> <span>Categories</span></a></li>
-        <li><a href="{{route('admin.home')}}"><i class="fa fa-list-alt"></i> <span>Products</span></a></li>
-        <li><a href="#"><i class="fa fa-picture-o"></i> <span>Images</span></a></li>
-        <li><a href="{{route('admin.orders.index')}}"><i class="fa fa-edit"></i> <span>Orders</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Discounts</span></a></li>
-        <li><a href="#"><i class="fa fa-edit"></i> <span>Comments</span></a></li>
->>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
       </ul>
       <!-- /.sidebar-menu -->
     </section>

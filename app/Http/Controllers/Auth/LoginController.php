@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/index';
     /**
      * Create a new controller instance.
      *
@@ -42,7 +42,7 @@ class LoginController extends Controller
     {
         if (Auth::check())
         {
-            return redirect('home');
+            return redirect()->route('users.index');
         } else {
             return view('auth.login');
         }
@@ -54,10 +54,15 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
         if (Auth::attempt($login)) {
-            return redirect('/home');
+            return redirect()->route('users.index');
         } else {
             return redirect()->route('login')->with('status', 'Email hoặc Password không chính xác');
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('users.index');
+    }
 }

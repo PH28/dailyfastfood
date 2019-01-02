@@ -22,7 +22,7 @@
 
     <link href="{{ asset('user/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all" />
 
-    <!-- Style --> <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css" media="all">
+    <!-- Style --> <link rel="stylesheet" href="{{ asset('user/css/style2.css') }}" type="text/css" media="all">
 
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
@@ -86,7 +86,7 @@
         </div>
 
         
-        <script type="text/javascript" src="{{ asset('user/js/jquery-2.1.4.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('user/js/jquery-2.1.4.min.js') }}"></script>
 
             <script src="{{ asset('user/js/jquery.magnific-popup.js') }}" type="text/javascript"></script>
 

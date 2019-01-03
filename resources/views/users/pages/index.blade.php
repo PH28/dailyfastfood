@@ -44,6 +44,12 @@
 										<div class="single-item-header">
 											<a href="{{route('users.product', $eat->id)}}"><img src="{{ $eat->path }}" alt="" height="250px"></a>
 										</div>
+										<div>
+											@foreach($eat->images as $item1)
+                                <img src="{!! url($item1->path) !!}" width="250"  height="200" alt="">
+								
+                                @endforeach 
+										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$eat->name}}</p>
 											<p class="single-item-price" style="font-size: 18px">
@@ -76,6 +82,12 @@
 									<div class="single-item">
 										<div class="single-item-header">
 											<a href="{{route('users.product', $drink->id)}}"><img src="{{ $drink->path }}" alt="" height="250px"></a>
+										</div>
+										<div>
+											@foreach($drink->images as $item1)
+                                <img src="{!! url($item1->path) !!}" width="200"  height="160" alt="">
+								
+                                @endforeach 
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$drink->name}}</p>

@@ -40,12 +40,19 @@
 									<div class="single-item-header">
 										<a href="{{route('users.product', $product->id)}}"><img src="{{$product->path}}" alt="" height="250px"></a>
 									</div>
+									<div>
+											@foreach($product->images as $item1)
+                                <img src="{!! url($item1->path) !!}" width="300"  height="240" alt="">
+								
+                                @endforeach 
+										</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$product->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
 												<span class="flash-sale">{{number_format($product->price)}} đồng</span>
 										</p>
 									</div>
+
 									<div class="single-item-caption">
 										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
 										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
@@ -78,6 +85,12 @@
 												<span class="flash-sale">{{number_format($product_o->price)}} đồng</span>
 										</p>
 									</div>
+									<div>
+											@foreach($product_o->images as $item1)
+                                <img src="{!! url($item1->path) !!}" width="300"  height="240" alt="">
+								
+                                @endforeach 
+										</div>
 									<div class="single-item-caption">
 										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
 										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>

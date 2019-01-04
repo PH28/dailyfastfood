@@ -36,23 +36,18 @@
                         @endif
                         <div class="form-group" >
                                 <label>Category Name :{{$product->category->name}}</label> 
-                                <input class="form-control" name="name" value="{{$product->category->name}}" />
                         </div>
                             <div class="form-group">
-                                <label>Product Name</label>
-                                <input class="form-control" name="name" value="{{$product->name}}" />
+                                <label>Product Name: {{$product->name}}</label>
                             </div>
                             <div class="form-group">
-                                <label>Product Quantity</label>
-                                <input class="form-control" name="quantity" value="{{$product->quantity}}" />
+                                <label>Product Quantity : {{$product->quantity}}</label>
                             </div>
                             <div class="form-group">
-                                <label>Product Price</label>
-                                <input class="form-control" name="price" value="{{number_format($product->price)}} VND "/>
+                                <label>Product Price: {{number_format($product->price)}} VND</label>
                             </div>
                             <div class="form-group">
-                                <label>Product Description</label>
-                                <textarea class="form-control" rows="3" name="description" >{{$product->description}}</textarea>
+                                <label>Product Description:{{$product->description}}</label>
                             </div>
 
                  

@@ -32,9 +32,9 @@
 				
 				</div>
 				<div class="col-sm-4 fl-l">
-				<label for=""> -tổng hóa đơn  &emsp;:{{$users->phone}}</label>
-				<label for=""> -đã thanh toán  &emsp;:{{$users->phone}}</label>
-				<label for=""> -số tiền  &emsp;:{{$users->phone}}</label>
+				<label for=""> -tổng hóa đơn  &emsp;:</label>
+				<label for=""> -đã thanh toán  &emsp;:</label>
+				<label for=""> -số tiền  &emsp;:</label>
 				</div>
 			</div>
 	            <div class="row">

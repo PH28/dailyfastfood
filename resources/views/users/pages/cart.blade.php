@@ -7,7 +7,7 @@
 					<th>ID</th>
 					<th>Product name</th>
 					<th width="100">Image</th>
-					<th></th>
+					<th>dfghj</th>
 					<th>Price</th>
 				</tr>
 			</thead>

@@ -204,7 +204,7 @@ desired effect
 <script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<<<<<<< HEAD
+
 <script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
@@ -213,15 +213,13 @@ desired effect
 <script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.js') }}"></script>
 <script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ asset('admin/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
-=======
->>>>>>> 326b00861b40029bfd1721436358ca7c9c027ce8
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 <script>
     $(function() {
         $('#example1').DataTable()
-
+        $('#example2').DataTable()
         //Datemask2 mm/dd/yyyy
         $('#datemask2').inputmask('yyyy/mm/dd', { 'placeholder': 'yyyy/mm/dd' })
         //Money Euro

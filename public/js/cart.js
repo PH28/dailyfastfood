@@ -13,7 +13,6 @@
 			
 			$('.add2cart').on('click', function(){
 				var proId = $(this).attr('productId');
-				
 				var pName = $('#pro-'+proId).find('#productName').text();
 				var imgUrl = $('#pro-'+proId).find('img').attr('src');
 				var price = $('#pro-'+proId).find('#price').text();
@@ -43,11 +42,15 @@
 			});
 		});
 		function drawCheckout(){
-            
-			$('.tbody').empty();
+			console.log($('table').html());
+			
+			$('tbody').empty();
+			
+			//sai  selectoỏ
 			var ckUnit = "";
 			var totalMoney = 0;
-			
+			//  debugger;
+			console.log(cart);
 			for (var i = 0; i < cart.length; i++) {
 				totalMoney += cart[i].price * cart[i].quantity;
 				ckUnit += `
@@ -75,8 +78,11 @@
 					<td><b>$${totalMoney}</b></td>
 				</tr>	
 			`;
-			$('.item').append(ckUnit);
+			$('tbody').append(ckUnit);
 			localStorage.setItem(storageKey,JSON.stringify(cart));
+
+			//chuathem vao, caikia lanoo lay du lieu
+			//$('tbody').prepend(ckUnit);
 		}
 		function removeUnit(id){
 			// Check san pham co trong gio hang hay chua

@@ -35,11 +35,11 @@
 
 						<div class="row">
 						@foreach($products_by_category as $product)
-							<div class="col-sm-4">
+							<div class="col-sm-4"  id="pro-{{ $product->id }}">
 								<div class="single-item">
-									<div class="single-item-header">
+									<!-- <div class="single-item-header">
 										<a href="{{route('users.product', $product->id)}}"><img src="{{$product->path}}" alt="" height="250px"></a>
-									</div>
+									</div> -->
 									<div>
 											@foreach($product->images as $item1)
                                 <img src="{!! url($item1->path) !!}" width="300"  height="240" alt="">
@@ -47,14 +47,14 @@
                                 @endforeach 
 										</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$product->name}}</p>
+										<p class="single-item-title" id="productName">{{$product->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale">{{number_format($product->price)}} đồng</span>
+												<span class="flash-sale" id="price">{{number_format($product->price)}} đồng</span>
 										</p>
 									</div>
 
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+									<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
 										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
@@ -74,15 +74,15 @@
 						</div>
 						<div class="row">
 						@foreach($products_other as $product_o)
-							<div class="col-sm-4">
+							<div class="col-sm-4" id="pro-{{ $product_o->id }}">
 								<div class="single-item">
 									<div class="single-item-header">
 										<a href="{{route('users.product', $product_o->id)}}"><img src="{{$product_o->path}}" alt="" height="250px"></a>
 									</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$product_o->name}}</p>
+										<p class="single-item-title" id="productName">{{$product_o->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale">{{number_format($product_o->price)}} đồng</span>
+												<span class="flash-sale" id="price">{{number_format($product_o->price)}} đồng</span>
 										</p>
 									</div>
 									<div>
@@ -92,7 +92,7 @@
                                 @endforeach 
 										</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+									<button type="button" productId="{{ $product_o->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
 										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>

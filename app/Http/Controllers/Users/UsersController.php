@@ -28,5 +28,9 @@ class UsersController extends Controller
     	$products_by_category = Product::with('images')->where('category_id', $id)->get();
     	$products_other = Product::with('images')->where('category_id', '<>', $id)->paginate(5);
     	return view('users.pages.category', compact('categories', 'category', 'products_by_category', 'products_other'));
-    }
+	}
+	public function cart(){
+		$categories = Category::all();
+		return view('users.pages.cart',compact('categories'));
+   }
 }

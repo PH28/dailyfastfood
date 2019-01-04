@@ -39,7 +39,11 @@
 					<div class="beta-comp">
 					
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{-- (@if(Session::has('cart')){{Session('cart')->totalQty}}@else Trống @endif) --}} <i class="fa fa-chevron-down"></i></div>
+							<div class="beta-select">
+							<div class="cart">
+							<a  class="fa fa-shopping-cart" href="{{route('users.cart')}}" data-toggle="tooltip" data-placement="left" title="Add to Cart"></a>
+							</div>
+							 Giỏ hàng {{-- (@if(Session::has('cart')){{Session('cart')->totalQty}}@else Trống @endif) --}} <i class="fa fa-chevron-down"></i></div>
 							{{-- <div class="beta-dropdown cart-body">
 							
 							@if(Session::has('cart'))

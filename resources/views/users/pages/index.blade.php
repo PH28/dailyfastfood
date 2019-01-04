@@ -38,12 +38,9 @@
 
 							<div class="row">
 							@foreach($eat_cate as $eat)
-								<div class="col-sm-3">
+								<div class="col-sm-3" id="pro-{{ $eat->id }}">
 									<div class="single-item">
 									
-										<div class="single-item-header">
-											<a href="{{route('users.product', $eat->id)}}"><img src="{{ $eat->path }}" alt="" height="250px"></a>
-										</div>
 										<div>
 											@foreach($eat->images as $item1)
                                 <img src="{!! url($item1->path) !!}" width="250"  height="200" alt="">
@@ -51,13 +48,14 @@
                                 @endforeach 
 										</div>
 										<div class="single-item-body">
-											<p class="single-item-title">{{$eat->name}}</p>
+											<h1 class="single-item-title" id="productName">{{$eat->name}}</h1>
 											<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale">{{number_format($eat->price)}} đồng</span>
+												<span class="flash-sale" id="price">{{number_format($eat->price)}} đồng</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('users.addcart',$eat->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											
+											<button type="button" productId="{{ $eat->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
 											<a class="beta-btn primary" href="{{route('users.product',$eat->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
@@ -78,25 +76,22 @@
 							</div>
 							<div class="row">
 							@foreach($drink_cate as $drink)
-								<div class="col-sm-3">
+								<div class="col-sm-3" id="pro-{{ $drink->id }}>
 									<div class="single-item">
-										<div class="single-item-header">
-											<a href="{{route('users.product', $drink->id)}}"><img src="{{ $drink->path }}" alt="" height="250px"></a>
-										</div>
 										<div>
 											@foreach($drink->images as $item1)
-                                <img src="{!! url($item1->path) !!}" width="200"  height="160" alt="">
+                                <img src="{!! url($item1->path) !!}" width="200"  height="160" alt="{{$item1->name}}">
 								
                                 @endforeach 
 										</div>
 										<div class="single-item-body">
-											<p class="single-item-title">{{$drink->name}}</p>
+											<p class="single-item-title" id="productName">{{$drink->name}}</p>
 											<p class="single-item-price"  style="font-size: 18px">
-												<span class="flash-sale">{{number_format($drink->price)}} đồng</span>
+												<span class="flash-sale" id="price">{{number_format($drink->price)}} đồng</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('users.addcart',$drink->id)}}"><i class="fa fa-shopping-cart"></i></a>
+										<button type="button" productId="{{ $drink->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
 											<a class="beta-btn primary" href="{{route('users.product',$drink->id)}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>

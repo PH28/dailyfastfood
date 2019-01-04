@@ -42,13 +42,11 @@
 									<div class="single-item">
 									
 										<div class="single-item-header">
-											<a href="{{route('users.product', $eat->id)}}"><img src="{{ $eat->path }}" alt="" height="250px"></a>
-										</div>
-										<div>
-											@foreach($eat->images as $item1)
-                                <img src="{!! url($item1->path) !!}" width="250"  height="200" alt="">
-								
-                                @endforeach 
+											<a href="{{route('users.product', $eat->id)}}">
+												@foreach($eat->images as $item1)
+                                					<img src="{!! url($item1->path) !!}" width="250"  height="200" alt="">
+                               				 	@endforeach 
+											</a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$eat->name}}</p>
@@ -81,13 +79,11 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="{{route('users.product', $drink->id)}}"><img src="{{ $drink->path }}" alt="" height="250px"></a>
-										</div>
-										<div>
-											@foreach($drink->images as $item1)
-                                <img src="{!! url($item1->path) !!}" width="200"  height="160" alt="">
-								
-                                @endforeach 
+											<a href="{{route('users.product', $drink->id)}}">
+												@foreach($drink->images as $item1)
+                                					<img src="{!! url($item1->path) !!}" width="200"  height="160" alt="">
+                                				@endforeach 
+											</a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$drink->name}}</p>

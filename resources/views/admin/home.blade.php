@@ -18,7 +18,7 @@
     <p style="height: 5px"></p>
 
         @if (Session::has('message'))
-	        <div class="alert alert-info"> {{ Session::get('message') }}</div>
+	        <div class="alert alert-danger"> {{ Session::get('message') }}</div>
 	    @endif
 		@if (Session::has('success'))
 	        <div class="alert alert-info"> {{ Session::get('success') }}</div>

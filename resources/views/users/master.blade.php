@@ -59,8 +59,8 @@
 		
 	})
 	</script>
+	<script src="{{ asset('js/cart.js') }}"></script>
 </body>
 </html>
 
 
-<script src="{{ asset('js/cart.js') }}"></script>

@@ -50,7 +50,8 @@
 										<div class="single-item-body">
 											<h1 class="single-item-title" id="productName">{{$eat->name}}</h1>
 											<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale" id="price">{{number_format($eat->price)}} đồng</span>
+												<span class="flash-sale">{{number_format($eat->price)}} đồng</span>
+												<span hidden id="price">{{$eat->price}}</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
@@ -64,9 +65,6 @@
 							@endforeach
 							</div>
 							<div class="row">{{$eat_cate->links()}}</div>
-						</div> <!-- .beta-products-list -->
-
-						<div class="space50">&nbsp;</div>
 
 						<div class="beta-products-list">
 							<h4>Thức uống</h4>
@@ -76,7 +74,7 @@
 							</div>
 							<div class="row">
 							@foreach($drink_cate as $drink)
-								<div class="col-sm-3" id="pro-{{ $drink->id }}>
+								<div class="col-sm-3" id="pro-{{ $drink->id }}">
 									<div class="single-item">
 										<div>
 											@foreach($drink->images as $item1)
@@ -87,7 +85,8 @@
 										<div class="single-item-body">
 											<p class="single-item-title" id="productName">{{$drink->name}}</p>
 											<p class="single-item-price"  style="font-size: 18px">
-												<span class="flash-sale" id="price">{{number_format($drink->price)}} đồng</span>
+												<span class="flash-sale">{{number_format($drink->price)}} đồng</span>
+												<span hidden id="price">{{$drink->price}}</span>
 											</p>
 										</div>
 										<div class="single-item-caption">

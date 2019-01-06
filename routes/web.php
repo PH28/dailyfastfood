@@ -75,6 +75,7 @@ Route::group(['namespace' => 'Users', 'as' => 'users.'], function() {
 	Route::get('/about', 'UsersController@getAbout')->name('about');
 	Route::get('/add-to-cart/{id}', 'UsersController@getAddtocart')->name('addcart');
 	Route::get('/cart', 'UsersController@cart')->name('cart');
+	Route::resource('orders', 'OrderController');
 });
 
 Route::group([

@@ -85,17 +85,34 @@
 	                </div>
 	            </div>
 	        </div>
-
+			<div class="" id="">
+				---------------------------------------------------------
+					<ul class="pagination">
+						@if($orders->currentPage() !=1)
+						<li class="paginate_button previous disabled" id="datatable-buttons_previous">
+							<a href="#" aria-controls="datatable-buttons" data-dt-idx="0" tabindex="0">Previous</a>
+						</li>
+						@endif
+						@for ($i=1;$i<= $orders->lastPage();$i++)
+						<li class="paginate_button {{ ($orders->currentPage() == $i) ? 'active' : ' ' }}">
+							<a href="{{str_replace('/?','?',$orders->url($i))}}">{{$i}}</a>
+						</li>
+						@endfor
+						@if($orders->currentPage() !=$orders->lastPage())
+						<li class="paginate_button next" id="datatable-buttons_next">
+							<a href="#" aria-controls="datatable-buttons" data-dt-idx="7" tabindex="0">Next</a>
+						</li>
+						@endif
+						</ul>
+						------------------------------------------------------------------------------------------------------------------------------
+							</div>
 	    </div>
 	    <!-- /.box -->
 
 	</section>
 	<!-- /.content -->
-	<form action="" method="post" id="formDelete">
-	    <input type="hidden" name="_method" value="DELETE">
-	    @csrf
-	</form>
 	<div id="confirm" class="modal fade" role="dialog">
+		
 	    <div class="modal-dialog">
 	        <!-- Modal content-->
 	        <div class="modal-content">

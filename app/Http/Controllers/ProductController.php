@@ -5,6 +5,7 @@ use Food\User;
 use Food\Category;
 use Food\Image;
 use Food\Product;
+use Food\OrderDetail;
 use Illuminate\Http\Request;
 use Food\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Auth;
@@ -130,11 +131,21 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $dem=OrderDetail::where('product_id',$product->id)->count();
+        
+        if($dem==0){
+        $product->images()->delete();
+        $product->delete();
+        return back()->with('success',('Delete success'));
+        }else{ 
+            return back()->with('message',('product __'.$product->name.'__not delete'));
+        }
+        dd($dem);
         $product->images()->delete();
         
         $product->delete();
         return back()->with('message',('Delete success'));
-        // return redirect()->route('admin.home');
+        
     }
     public function detailProduct($id)
     { $user = Auth::user();

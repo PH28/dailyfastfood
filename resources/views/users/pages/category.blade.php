@@ -82,7 +82,8 @@
 									<div class="single-item-body">
 										<p class="single-item-title" id="productName">{{$product_o->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale" id="price">{{number_format($product_o->price)}} đồng</span>
+												<span class="flash-sale" >{{number_format($product_o->price)}} đồng</span>
+												<span hidden id="price">{{$product_o->price}}</span>
 										</p>
 									</div>
 									<div>

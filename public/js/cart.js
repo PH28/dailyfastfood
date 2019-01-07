@@ -74,12 +74,12 @@
 				ckUnit += `
 					<tr>
 						<td>${cart[i].id}</td>
-						<td>${cart[i].productName}</td>
+						<td style="font-weight: bold; font-size: 120%;">${cart[i].productName}</td>
 						<td>
 							<img src="${cart[i].imageUrl}" alt="" width="100"  height="80">
 						</td>
 						<td>
-							<input type="number" onchange="changeUnitQuantity(this, ${cart[i].id})" name="" value="${cart[i].quantity}" min="0" step="1" max="50">
+							<input type="number" onchange="changeUnitQuantity(this, ${cart[i].id})" name="" value="${cart[i].quantity}" min="0" step="1" max="20">
 							<button type="button" onclick="removeUnit(${cart[i].id})" class="btn btn-xs btn-info">
 								<span class="glyphicon glyphicon-remove"></span>
 							</button>
@@ -110,9 +110,9 @@
 				<tr class="table-success">
 					<td colspan="3">Total Price</td>
 					<td><b>$${totalMoney}</b> 
-					<input type="number" name="total" value="${totalMoney}">
-					<input type="text" name="productId" value="${pr}"> 
-					 <input type="text" name="quantity" value="${sl}"> 
+					<input type="hidden" name="total" value="${totalMoney}">
+					<input type="hidden" name="productId" value="${pr}"> 
+					 <input type="hidden" name="quantity" value="${sl}"> 
 					</td>
 				</tr>	
 			`;

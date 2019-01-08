@@ -79,7 +79,6 @@
 										<div>
 											@foreach($drink->images as $item1)
                                 <img src="{!! url($item1->path) !!}" width="200"  height="160" alt="{{$item1->name}}">
-								
                                 @endforeach 
 										</div>
 										<div class="single-item-body">

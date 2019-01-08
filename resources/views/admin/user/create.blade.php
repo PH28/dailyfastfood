@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
 <div class="x_panel">
-        <h2>create user</h2>
+
+<div style="margin: 0 auto; width: 60%;">
+        <b><h2>create user</h2></b>
     <div class="x_title">
         
         </div>
@@ -14,7 +16,7 @@
                     </div>
                 @endif
             <div class="dashboard-widget-content">
-            <div class="col-md-9 hidden-small">
+            <div class="col-md-9 hidden-small" style="border-radius: 5px; border: 1px solid green; background:honeydew;">
                     <form action="{{route('admin.users.store')}}"  method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                           <div class="form-group">
@@ -96,6 +98,8 @@
                         </form>
             </div>
             </div>
+            </div>
+
             </div>  
              
 </div>

@@ -19,9 +19,10 @@
 	   
 	    <!-- Default box -->
 	    <div class="box">
-	        <div class="box-header with-border">
+	        <div class="box-header with-border ">
 			<div class="row">
-				<div class="col-sm-3 ">
+				<div  class="col-sm-12">
+				<div class="col-sm-3 bg-info p-3 mb-2">
 				<div>
 				<h3>Tổng hóa đơn</h3>
 				<h1>{{$number_order}}</h1>
@@ -29,18 +30,19 @@
 				</div>
 				
 				</div>
-				<div class="col-sm-3">
-					<div>
-					<h3>hóa đơn đã hoàn thành</h3>
-						<h1>{{$order_finish}}</h1>
+				<div class="col-sm-3 bg-success p-3 mb-2">
+					<div class="">
+					<b><h3>hóa đơn đã hoàn thành</h3>
+						<h1>{{$order_finish}}</h1></b>
 					</div>
 				</div>
                 
-				<div class="col-sm-3">
+				<div class="col-sm-4 bg-danger">
 				<div>
 					<h3>hóa đơn chưa hoàn thành</h3>
 						<h1>{{$order_notfinish}}</h1>
 					</div>
+				</div>
 				</div>
 			</div>
 			<p style="height: 5px"></p>
@@ -54,13 +56,14 @@
 					<hr>
 	                <div class="col-sm-12">
 	                    <table class="table table-bordered table-hover dataTable">
-						<thead>
+						<thead class="bg-primary">
 	                        <tr role="row">
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Address</th>
 	                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">phone</th>
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Date order </th>
 								<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Total price </th>
 								<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">detail </th>
+								<th>status</th>
 								</tr>
 	                        </thead>
 							
@@ -76,7 +79,7 @@
 						<!-- <td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-success">Success</button></a></td> -->
 						<td>đã hoàn thành</td>
 						@else
-						<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-warning">Warning</button></a></td>
+						<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-warning">Check Order</button></a></td>
 						
 						@endif
 						</tr>

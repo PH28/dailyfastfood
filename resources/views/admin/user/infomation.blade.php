@@ -4,7 +4,7 @@
 	 <!-- Content Header (Page header) -->
 	<section class="content-header">
 	    <h1>
-	        Oder User
+	        Oder User {{$users->first_name}} {{$users->last_name}}
 	    </h1>
 	    <ol class="breadcrumb">
 	        <li><a href="#"><i class="fa fa-dashboard"></i> infomation</a></li>
@@ -19,29 +19,28 @@
 	    @if (Session::has('message'))
 	        <div class="alert alert-info"> {{ Session::get('message') }}</div>
 	    @endif
-	    <input type="text" id="myInput" onkeyup="searchByColumnNo('1')" placeholder="Search for names.." class="form-control">
 	    <!-- Default box -->
 	    <div class="box">
 	        <div class="box-header with-border">
-			<div class="row">
-				<div class="col-sm-4 ">
-				<label for="" > -Tên   &emsp;&emsp;: {{$users->first_name}} {{$users->last_name}}</label>
+			<!-- top liles -->
+			<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<label for="" > -Tên   &emsp;&emsp;: {{$users->first_name}} {{$users->last_name}}</label>
 				<label for=""> -Mail   &emsp;&emsp;:{{$users->email}}</label>
 				<label for=""> -phone  &emsp;:{{$users->phone}}</label>
 				<label for=""> -phone  &emsp;:{{$users->address}}</label>
-				
-				</div>
-				<div class="col-sm-4 fl-l">
-				<label for=""> -tổng hóa đơn  &emsp;:</label>
-				<label for=""> -đã thanh toán  &emsp;:</label>
+             </div>
+			 <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			 <label for=""> -tổng hóa đơn  &emsp;:{{$countOrder}}</label><br>
+				<label for=""> -đã thanh toán  &emsp;:{{$checked}}</label><br>
 				<label for=""> -số tiền  &emsp;:</label>
-				</div>
-			</div>
+			 </div>
+			<!-- end top loles -->
+			<hr>
 	            <div class="row">
 					<hr>
 	                <div class="col-sm-12">
-	                    <table class="table table-bordered table-hover dataTable">
-						<thead>
+	                    <table class="table table-bordered table-hover dataTable bg-warning ">
+						<thead class="bg-primary">
 	                        <tr role="row">
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Address</th>
 	                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">phone</th>

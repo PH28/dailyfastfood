@@ -67,7 +67,7 @@
  </div>
  <div class="form-group">
         <label for="phone">addresss</label>:</label>
-         <input type="number" class="form-control" placeholder="address" name="address">
+         <input type="text" class="form-control" placeholder="address" name="address">
  </div>
  </div>
 @endif

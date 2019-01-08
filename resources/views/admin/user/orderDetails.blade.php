@@ -85,7 +85,7 @@
 						<tr>
 						<td colspan="3"  align="right" >
 						@if($order->status==0)
-						<a href="{{route('admin.orders.check',$order->id)}}"><button type="button" class="btn btn-warning"></button></a>
+						<a href="{{route('admin.orders.check',$order->id)}}"><button type="button" class="btn btn-warning">check order</button></a>
 						@endif
 						<a href="{{route('admin.orders.index')}}"><button type="button" class="btn btn-primary float-right">Cancel</button></a>
 						</td>

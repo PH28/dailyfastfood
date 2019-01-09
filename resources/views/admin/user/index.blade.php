@@ -36,9 +36,9 @@
 	            <div class="row">
 	                <div class="col-sm-12">     
     <div class="countries_list">
-	<h2>Admin</h2>
+	<center><p><h2>Admin</h2></p></center>
     <table class="table table-sm table-dark table-hover dataTable">
-		<tr class="headings">
+		<tr class="headings bg-primary">
 			<th> ID</th>
 			<th> first name</th>
 			<th> last name</th>
@@ -78,9 +78,10 @@
 
 <div class="x_content">
                     <div class="table-responsive">
+                    
                       <table class="table table-bordered table-hover dataTable"  role="grid" aria-describedby="example2_info" >
-					  <caption><h1>User </h1> </caption>
-                        <thead>
+					 <center> <caption><b><h1>User </h1> </b></caption></center>
+                        <thead class="bg-warning">
                           <tr class="headings">
                             <th>
                               <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>

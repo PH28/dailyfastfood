@@ -19,7 +19,10 @@
 	    @if (Session::has('message'))
 	        <div class="alert alert-info"> {{ Session::get('message') }}</div>
 	    @endif
-	    <input type="text" id="myInput" onkeyup="searchByColumnNo('1')" placeholder="Search for names.." class="form-control">
+		@if (Session::has('success'))
+	        <div class="alert alert-info"> {{ Session::get('success') }}</div>
+	    @endif
+	
 	    <!-- Default box -->
 	    <div class="box">
 	        <div class="box-header with-border">
@@ -28,7 +31,7 @@
 	            <div class="row">
 					<hr>
 	                <div class="col-sm-4">
-	                    <table class="table table-bordered table-hover dataTable">					
+	                    <table class="table table-bordered table-hover dataTable bg-info">					
 						<tr>
 						<td class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">Address</td>
 						<td>{{$order->address}}</td>
@@ -49,9 +52,9 @@
 						<tr>
                         <td class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">status</td>
 						@if($order->status==1)
-						<td class="text-success">hoàng thành</td>
+						<td class="text-success bg-warning"><b>hoàng thành</b></td>
 						@else
-						<td class="text-danger">chưa check</td>
+						<td class="text-danger bg-danger"><b>chưa check</b></td>
 						@endif
                         </tr>
 						</table>
@@ -59,7 +62,7 @@
                     <div class="col-sm-8">
                     <h2>Order detail</h2>
                     <table class="table table-bordered table-hover dataTable">
-						<thead>
+						<thead class="bg-primary">
 	                        <tr role="row">
 	                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">name</th>
 	                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="">quantity</th>
@@ -74,12 +77,22 @@
 						<td>{{$value['price']}}</td>
 						</tr>
 						@endforeach
+						<tr class="bg-info">
+						<td colspan="3"  align="right"  >
+						<b>{{number_format($order->total_price)}} VN</b>
+						</td>
+						</tr>
 						<tr>
-						<td colspan="3"  align="right">
-						{{number_format($order->total_price)}} VN
+						<td colspan="3"  align="right" >
+						@if($order->status==0)
+						<a href="{{route('admin.orders.check',$order->id)}}"><button type="button" class="btn btn-warning">check order</button></a>
+						@endif
+						<a href="{{route('admin.orders.index')}}"><button type="button" class="btn btn-primary float-right">Cancel</button></a>
 						</td>
 						</tr>
 						</table>
+						
+						
                     </div>
 
 	            </div>
@@ -106,6 +119,7 @@
 	                <p> Are you sure?</p>
 	            </div>
 	            <div class="modal-footer">
+
 	                <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
 	                <button type="button" data-dismiss="modal" class="btn">Cancel</button>
 	            </div>

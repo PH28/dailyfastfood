@@ -67,6 +67,7 @@
                        <i class="fa fa-save"></i>
                        <span>save</span>
                    </button>
+                   <a href="{{route('admin.home')}}"><button type="button" class="btn btn-primary float-right">Cancel</button></a>   
                </div>
 		</form>
        

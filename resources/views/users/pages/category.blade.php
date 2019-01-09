@@ -43,8 +43,9 @@
 									<div class="single-item-body">
 										<p class="single-item-title">{{$product_cate->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-											<span class="flash-sale">{{number_format($product_cate->price)}} đồng</span>
-										</p> 
+												<span class="flash-sale">{{number_format($product->price)}} đồng</span>
+												<span hidden id="price">{{$product->price}}</span>
+										</p>
 									</div>
 									<div class="single-item-caption">
 										<a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
@@ -69,6 +70,7 @@
 						@foreach($products_other as $product_o)
 							<div class="col-sm-4">
 								<div class="single-item">
+
 									<div class="single-item-header">
 										<a href="{{ route('users.product', $product_o->id) }}">
 											@foreach($product_o->images as $o)
@@ -76,10 +78,12 @@
 											@endforeach
 										</a>
 									</div>
+
 									<div class="single-item-body">
 										<p class="single-item-title">{{$product_o->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-											<span class="flash-sale">{{number_format($product_o->price)}} đồng</span>
+												<span class="flash-sale" >{{number_format($product_o->price)}} đồng</span>
+												<span hidden id="price">{{$product_o->price}}</span>
 										</p>
 									</div>
 									<div class="single-item-caption">

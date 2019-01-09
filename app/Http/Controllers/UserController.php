@@ -118,9 +118,14 @@ class UserController extends Controller
     public function userInfomation($id){
         
         $users=User::with('orders')->where('id',$id)->first();
+        $countOrder=$users->orders->count();
+        $checked=$users->orders->where('status',1)->count();
+
+
+        //dd($countOrder);
         
        //dd($users);
-        return view('admin.user.infomation',compact('users'));
+        return view('admin.user.infomation',compact('users','countOrder','checked'));
         
     }
     public function userInfomationByOrderDeatil($id){
@@ -134,7 +139,7 @@ class UserController extends Controller
            $data=[
                'name_product'=>$products->name,
                 'quantity'=>$value->quantity,
-                'price'=>$products->price * $value->quantity,
+                'price'=>number_format($products->price * $value->quantity).'VN',
            ];
            array_push($order_detail,$data);
         }

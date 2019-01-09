@@ -50,6 +50,7 @@
 	<div class="copyright">
 		<div class="container">
 			<p class="pull-left">Shop đồ ăn online | Thức uống online | (&copy;) 2018 </p>
+
 			<div class="clearfix"></div>
 		</div> <!-- .container -->
 	</div> <!-- .copyright -->

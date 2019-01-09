@@ -50,7 +50,8 @@
 										<div class="single-item-body">
 											<p class="single-item-title" id="productName">{{$eat->name}}</p>
 											<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale" id="price">{{number_format($eat->price)}} đồng</span>
+												<span class="flash-sale">{{number_format($eat->price)}} đồng</span>
+												<span hidden id="price">{{$eat->price}}</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
@@ -67,6 +68,7 @@
 						</div> <!-- .beta-products-list -->
 
 						<div class="space50">&nbsp;</div>
+
 
 						<div class="beta-products-list">
 							<h4>Thức uống</h4>
@@ -88,7 +90,8 @@
 										<div class="single-item-body">
 											<p class="single-item-title" id="productName">{{ $drink->name }}</p>
 											<p class="single-item-price"  style="font-size: 18px">
-												<span class="flash-sale" id="price">{{ number_format($drink->price) }} đồng</span>
+												<span class="flash-sale">{{number_format($drink->price)}} đồng</span>
+												<span hidden id="price">{{$drink->price}}</span>
 											</p>
 										</div>
 										<div class="single-item-caption">

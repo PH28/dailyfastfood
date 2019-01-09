@@ -31,7 +31,7 @@
 
 						<div class="row">
 						@foreach($products_by_category as $product_cate)
-							<div class="col-sm-4">
+							<div class="col-sm-4" id="pro-{{ $product_cate->id }}">
 								<div class="single-item">
 									<div class="single-item-header">
 										<a href="{{ route('users.product', $product_cate->id) }}">
@@ -41,17 +41,17 @@
 										</a>
 									</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$product_cate->name}}</p>
+										<p class="single-item-title" id="productName">{{$product_cate->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-												<span class="flash-sale">{{number_format($product->price)}} đồng</span>
-												<span hidden id="price">{{$product->price}}</span>
+												<span class="flash-sale">{{number_format($product_cate->price)}} đồng</span>
+												<span hidden id="price">{{$product_cate->price}}</span>
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="">Details <i class="fa fa-chevron-right"></i></a>
-										<div class="clearfix"></div>
-									</div>
+											<button type="button" productId="{{ $product_cate->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
+											<a class="beta-btn primary" href="{{route('users.product', $product_cate->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
 								</div>
 							</div>
 						@endforeach
@@ -68,7 +68,7 @@
 						</div>
 						<div class="row">
 						@foreach($products_other as $product_o)
-							<div class="col-sm-4">
+							<div class="col-sm-4" id="pro-{{ $product_o->id }}">
 								<div class="single-item">
 
 									<div class="single-item-header">
@@ -80,17 +80,18 @@
 									</div>
 
 									<div class="single-item-body">
-										<p class="single-item-title">{{$product_o->name}}</p>
+										<p class="single-item-title" id="productName">{{$product_o->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
 												<span class="flash-sale" >{{number_format($product_o->price)}} đồng</span>
 												<span hidden id="price">{{$product_o->price}}</span>
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="">Details <i class="fa fa-chevron-right"></i></a>
-										<div class="clearfix"></div>
-									</div>
+											
+											<button type="button" productId="{{ $product_o->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
+											<a class="beta-btn primary" href="{{route('users.product', $product_o->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
 								</div>
 							</div>
 						@endforeach

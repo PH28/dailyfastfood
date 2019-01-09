@@ -15,9 +15,9 @@ class UsersController extends Controller
     	$slides = Slide::all();
     	$categories = Category::all();
     	unset($categories[0], $categories[1]);
-        $eat_cates = Category::where('parent_id' , 1)->get()->toArray();
+        $eat_cates = Category::where('parent_id' , 1)->pluck('id')->toArray();
         $eat_products = Product::whereIn('category_id', $eat_cates)->with('images')->paginate(8);
-    	$drink_cates = Category::where('parent_id' , 2)->get()->toArray();
+    	$drink_cates = Category::where('parent_id' , 2)->pluck('id')->toArray();
         $drink_products = Product::whereIn('category_id', $drink_cates)->with('images')->paginate(4);
     	return view('users.pages.index', compact('slides', 'categories', 'eat_products', 'drink_products'));
     }

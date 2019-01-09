@@ -3,6 +3,7 @@
 namespace Food\Http\Controllers;
 
 use Food\Image;
+use Food\Product;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -14,7 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::with('product')->get();
+        return view('admin.images.index', compact('images'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        $productIds = Product::orderBy('id', 'desc')->pluck('name', 'id');
+        return view('admin.images.create', compact('productIds'));
     }
 
     /**
@@ -33,9 +36,28 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        //
+        $array = [];
+        $data = $request->all();
+        if($request->hasFile('images')) {
+            $files = $request->file('images');
+            foreach($files as $file) {
+                $name = $file->getClientOriginalName();
+                $images = str_random(5)."_".$name;
+                $path = public_path('/images/foods');
+                while(file_exists(public_path('/images/foods').$images)) {
+                    $images = str_random(5)."_".$name;
+                }
+                $file->move($path, $images);
+                array_push($array, $images);
+            }
+        }
+        if(Image::create($data)) {
+            return redirect()->route('admin.images.index')->with('message', 'Successfully created images');
+        } else {
+            return redirect()->route('admin.images.create');
+        }
     }
 
     /**
@@ -80,6 +102,6 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        
     }
 }

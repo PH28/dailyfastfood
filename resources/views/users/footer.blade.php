@@ -50,12 +50,6 @@
 	<div class="copyright">
 		<div class="container">
 			<p class="pull-left">Shop đồ ăn online | Thức uống online | (&copy;) 2018 </p>
-			<p class="pull-right pay-options">
-				<a href="" target="_blank"><img style="width: 30px;height: 30px;line-height: 30px;margin-top: 10px;" src="source/image/facebook-256.png" alt="" /></a>
-				<a href="" target="_blank"><img style="width: 30px;height: 30px;line-height: 30px;margin-top: 10px;" src="source/image/twitter-icon-9.png" alt="" /></a>
-				<a href="" target="_blank"><img style="width: 30px;height: 30px;line-height: 30px;margin-top: 10px;" src="source/image/7-128.png" alt="" /></a>
-				<a href="" target="_blank"><img style="width: 30px;height: 30px;line-height: 30px;margin-top: 10px;" src="source/image/YouTube-icon-full_color.png" alt="" /></a>
-			</p>
 			<div class="clearfix"></div>
 		</div> <!-- .container -->
 	</div> <!-- .copyright -->

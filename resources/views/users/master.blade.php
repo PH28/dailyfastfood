@@ -14,6 +14,7 @@
 	<link rel="stylesheet" title="style" href="{{ asset('user/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
 	<link rel="stylesheet" title="style" href="{{ asset('user/css/huong-style.css') }}">
+	
 </head>
 <body>
 
@@ -26,6 +27,7 @@
 
 
 	<!-- include js files -->
+
 	<script src="{{ asset('user/js/jquery.js') }}"></script>
 	<script src="{{ asset('user/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js') }}"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -40,6 +42,8 @@
 	<script src="{{ asset('user/js/wow.min.js') }}"></script>
 	<!--customjs-->
 	<script src="{{ asset('user/js/custom2.js') }}"></script>
+
+
 	<script>
 	$(document).ready(function($) {    
 		$(window).scroll(function(){

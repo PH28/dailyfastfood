@@ -61,6 +61,7 @@ Route::group([
 
 		//images
 		Route::resource('images', 'ImageController');
+		Route::get('/images/{id}/delete', 'ImageController@destroy')->name('images.destroy');
 
 		//discounts
 		Route::resource('discounts', 'DiscountController');
@@ -74,6 +75,8 @@ Route::group(['namespace' => 'Users', 'as' => 'users.'], function() {
 	Route::get('/contact', 'UsersController@getContact')->name('contact');
 	Route::get('/about', 'UsersController@getAbout')->name('about');
 	Route::get('/add-to-cart/{id}', 'UsersController@getAddtocart')->name('addcart');
+	Route::get('/cart', 'UsersController@cart')->name('cart');
+	Route::get('/search', 'UsersController@searchProduct')->name('searchProduct');
 });
 
 Route::group([

@@ -10,7 +10,7 @@
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
 					@if(Auth::check())
-						<li><a href="">Chào bạn {{Auth::user()->email}}</a></li>
+						<li><a href="">Chào bạn {{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</a></li>
 						<li><a href="{{route('logout')}}">Đăng xuất</a></li>
 					@else
 						<li><a href="{{route('register')}}">Đăng kí</a></li>
@@ -25,13 +25,13 @@
 		<div class="header-body">
 			<div class="container beta-relative">
 				<div class="pull-left">
-					<a href="{{ route('users.index') }}" id="logo"><img src="user/images/logo-fastfood.jpeg" width="200px" height="80px" alt=""></a>
+					<a href="{{ route('users.index') }}" id="logo"><img src="{{ url('user/images/logo-fastfood.jpeg') }}" width="200px" height="80px" alt=""></a>
 				</div>
 				<div class="pull-right beta-components space-left ov">
 					<div class="space10">&nbsp;</div>
 					<div class="beta-comp">
-						<form role="search" method="get" id="searchform" action="/">
-					        <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+						<form role="search" method="GET" id="searchform" action="{{ route('users.searchProduct') }}">
+					        <input type="text" value="" name="search" id="s" placeholder="Search here..." />
 					        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
 						</form>
 					</div>
@@ -39,10 +39,10 @@
 					<div class="beta-comp">
 					
 						<div class="cart">
-							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{-- (@if(Session::has('cart')){{Session('cart')->totalQty}}@else Trống @endif) --}} <i class="fa fa-chevron-down"></i></div>
-							{{-- <div class="beta-dropdown cart-body">
+							<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng <i class="fa fa-chevron-down"></i></div>
+							<div class="beta-dropdown cart-body">
 							
-							@if(Session::has('cart'))
+							{{-- @if(Session::has('cart'))
 							@foreach($product_cart as $product)
 								<div class="cart-item">
 									<a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-times"></i></a>
@@ -65,8 +65,8 @@
 									</div>
 								</div>
 
-							@endif
-							</div> --}}
+							@endif --}}
+							</div>
 						</div> <!-- .cart -->
 					</div>
 				</div>
@@ -80,7 +80,7 @@
 				<nav class="main-menu">
 					<ul class="l-inline ov">
 						<li><a href="{{route('users.index')}}">Trang chủ</a></li>
-						<li><a href="#">Sản phẩm</a>
+						<li><a href="">Sản phẩm</a>
 							<ul class="sub-menu">
 								@foreach($categories as $cate)
 								<li><a href="{{route('users.category',$cate->id)}}">{{$cate->name}}</a></li>

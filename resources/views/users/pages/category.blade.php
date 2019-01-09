@@ -2,12 +2,9 @@
 @section('content')
 <div class="inner-header">
 		<div class="container">
-			<div class="pull-left">
-				<h6 class="inner-title">{{$category->name}}</h6>
-			</div>
 			<div class="pull-right">
 				<div class="beta-breadcrumb font-large">
-					<a href="{{route('users.index')}}">Home</a> / <span>Sản phẩm</span>
+					<a href="{{route('users.index')}}">Home</a> / <span>Loại sản phẩm</span>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -27,36 +24,32 @@
 				</div>
 				<div class="col-sm-9">
 					<div class="beta-products-list">
-						<h4>New Products</h4>
+						<h4>{{ $category->name }}</h4>
 						<div class="beta-products-details">
-							<p class="pull-left">Tìm thấy {{count($products_by_category)}} sản phẩm</p>
-							<div class="clearfix"></div>
+							
 						</div>
 
 						<div class="row">
-						@foreach($products_by_category as $product)
-							<div class="col-sm-4"  id="pro-{{ $product->id }}">
+						@foreach($products_by_category as $product_cate)
+							<div class="col-sm-4">
 								<div class="single-item">
-									<!-- <div class="single-item-header">
-										<a href="{{route('users.product', $product->id)}}"><img src="{{$product->path}}" alt="" height="250px"></a>
-									</div> -->
-									<div>
-											@foreach($product->images as $item1)
-                                <img src="{!! url($item1->path) !!}" width="300"  height="240" alt="">
-								
-                                @endforeach 
-										</div>
+									<div class="single-item-header">
+										<a href="{{ route('users.product', $product_cate->id) }}">
+											@foreach($product_cate->images as $p_cate)
+												<img src="{{ url($p_cate->path) }}" alt="" height="200px" width="250">
+											@endforeach
+										</a>
+									</div>
 									<div class="single-item-body">
-										<p class="single-item-title" id="productName">{{$product->name}}</p>
+										<p class="single-item-title">{{$product_cate->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
 												<span class="flash-sale">{{number_format($product->price)}} đồng</span>
 												<span hidden id="price">{{$product->price}}</span>
 										</p>
 									</div>
-
 									<div class="single-item-caption">
-									<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+										<a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
+										<a class="beta-btn primary" href="">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -75,26 +68,27 @@
 						</div>
 						<div class="row">
 						@foreach($products_other as $product_o)
-							<div class="col-sm-4" id="pro-{{ $product_o->id }}">
+							<div class="col-sm-4">
 								<div class="single-item">
-									
-								@foreach($product_o->images as $item1)
-                                <img src="{!! url($item1->path) !!}" width="300"  height="240" alt="">
-								
-                                @endforeach 
+
+									<div class="single-item-header">
+										<a href="{{ route('users.product', $product_o->id) }}">
+											@foreach($product_o->images as $o)
+												<img src="{{ url($o->path) }}" alt="" height="200px" width="250">
+											@endforeach
+										</a>
+									</div>
+
 									<div class="single-item-body">
-										<p class="single-item-title" id="productName">{{$product_o->name}}</p>
+										<p class="single-item-title">{{$product_o->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
 												<span class="flash-sale" >{{number_format($product_o->price)}} đồng</span>
 												<span hidden id="price">{{$product_o->price}}</span>
 										</p>
 									</div>
-									<div>
-								
-										</div>
 									<div class="single-item-caption">
-									<button type="button" productId="{{ $product_o->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+										<a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
+										<a class="beta-btn primary" href="">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>

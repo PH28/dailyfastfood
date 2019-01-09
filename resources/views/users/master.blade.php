@@ -14,6 +14,7 @@
 	<link rel="stylesheet" title="style" href="{{ asset('user/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
 	<link rel="stylesheet" title="style" href="{{ asset('user/css/huong-style.css') }}">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"  crossorigin="anonymous"></script>
@@ -44,7 +45,6 @@
 	<script src="{{ asset('user/js/wow.min.js') }}"></script>
 	<!--customjs-->
 	<script src="{{ asset('user/js/custom2.js') }}"></script>
-
 
 
 	<script>

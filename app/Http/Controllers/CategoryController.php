@@ -102,12 +102,12 @@ class CategoryController extends Controller
     {
         $category = Category::withCount('childs', 'products')->where('id', $id)->first();
 
-            if($category->childs_count == 0)
+            if($category->childs_count == 0) 
                 if($category->products_count == 0)
                     {
                         $category->delete();
                         return redirect()->back()->with('message', 'Successfully deleted');
-                    } 
+                    }
             return redirect()->back()->with('error', 'Delete failed');
     }
 }

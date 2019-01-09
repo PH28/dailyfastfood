@@ -63,7 +63,12 @@ Route::group([
 	Route::resource('comments', 'CommentController');
 
 		//images
+<<<<<<< HEAD
 	Route::resource('images', 'ImageController');
+=======
+		Route::resource('images', 'ImageController');
+		Route::get('/images/{id}/delete', 'ImageController@destroy')->name('images.destroy');
+>>>>>>> 57e60f8b8594da7eafc76f5df2036430531bb4ea
 
 		//discounts
 	Route::resource('discounts', 'DiscountController');
@@ -78,6 +83,7 @@ Route::group(['namespace' => 'Users', 'as' => 'users.'], function () {
 	Route::get('/about', 'UsersController@getAbout')->name('about');
 	Route::get('/add-to-cart/{id}', 'UsersController@getAddtocart')->name('addcart');
 	Route::get('/cart', 'UsersController@cart')->name('cart');
+	Route::get('/search', 'UsersController@searchProduct')->name('searchProduct');
 	Route::resource('orders', 'OrderController');
 });
 

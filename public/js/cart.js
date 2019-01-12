@@ -12,7 +12,7 @@ if (datastring) {
 }
 
 if ($('#success')[0]) {
-	console.log(storageKey);
+	//console.log(storageKey);
 
 	// for (var i = 0; i < cart.length; i++) {
 	// 	cart.splice(i, 0);
@@ -52,29 +52,67 @@ $(document).ready(function () {
 		drawCheckout();
 
 	});
+	$('#show').click(function () {
+		$('.ifuser').toggle("slide");
+	});
+	$('.addcart').on('click', function () {
+		var proId = $(this).attr('productId');
+		var pName = $('#pro-' + proId).find('#productName').text();
+		var imgUrl = $('#pro-' + proId).find('img').attr('src');
+		var price = $('#pro-' + proId).find('#price').text();
+		//var qty = $('#pro-' + proId).find('#qt').text();
+		var qty = document.getElementById("qt").value;
+		var obj = {
+			id: proId,
+			productName: pName,
+			imageUrl: imgUrl,
+			price: price,
+		};
+		// Check san pham co trong gio hang hay chua
+		var flag = false;
+		for (var i = 0; i < cart.length; i++) {
+			if (cart[i].id == obj.id) {
+				flag = true;
+				break;
+			}
+		}
+		// san pham chua co trong gio hang
+		if (flag === false) {
+			obj.quantity = parseInt(qty);
+			cart.push(obj);
+		} else {
+			cart[i].quantity += parseInt(qty);
+		}
+
+		drawCheckout();
+
+	});
 });
 function drawCheckout() {
 
 	$('.tbody1').empty();
 	$('.order').empty();
-	//sai  selectoỏ
+	$('#sl').empty();
+	$('#sl').append(cart.length);
+
 	var ckUnit = "";
 	var ckUnit1 = "";
 	var totalMoney = 0;
 	var pr = [];
 	var sl = [];
 	//  debugger;
-	console.log(cart);
+	console.log(cart.length);
 	for (var i = 0; i < cart.length; i++) {
 
 		pr[i] = cart[i].id;
 		sl[i] = cart[i].quantity;
 		totalMoney += cart[i].price * cart[i].quantity;
-		console.log(sl[i]);
+		$stt = i + 1;
+		//console.log(sl[i]);
 		//debugger;
 		ckUnit += `
 					<tr>
-						<td>${cart[i].id}</td>
+					<td>${$stt}</td>
 						<td style="font-weight: bold; font-size: 120%;">${cart[i].productName}</td>
 						<td>
 							<img src="${cart[i].imageUrl}" alt="" width="100"  height="80">
@@ -92,7 +130,7 @@ function drawCheckout() {
 				`;
 		ckUnit1 += `
 					<tr>
-						<td>${[i]}</td>
+						<td>${$stt}</td>
 						<td>${cart[i].productName}</td>
 						<td>${cart[i].quantity}</td>
 						<td>

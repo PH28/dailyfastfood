@@ -16,7 +16,7 @@
 	<link rel="stylesheet" title="style" href="{{ asset('user/css/huong-style.css') }}">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"  crossorigin="anonymous"></script>
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 	<!-- include js files -->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
 	<script src="{{ asset('user/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js') }}"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	<script src="{{ asset('user/vendors/bxslider/jquery.bxslider.min.js') }}"></script>

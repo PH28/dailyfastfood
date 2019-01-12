@@ -146,13 +146,38 @@ class OrderController extends Controller
     }
     public function searchDate(Request $request)
     {
-        dd('adnajsdn');
-        $orders = Order::whereBetween('date', [$request->start, $request->end])->orderBy('date', 'desc')->paginate(10);
-        dd($orders);
+        //dd(, );
+        $start = $request->start;
+        $end = $request->end;
+
+        // if ($start == '') {
+        //     //dd('hhhhhhh');
+        //     $orders = Order::whereBetween('date', '<=', $end)->orderBy('date', 'desc')->paginate(10);
+        // } elseif ($end == '') {
+        //     //dd('vbnk');
+        //     $orders = Order::whereBetween('date', '<=', $start)->orderBy('date', 'desc')->paginate(10);
+        // } else {
+        if ($start > $end) {
+            $f = $start;
+            $start = $end;
+            $end = $f;
+        }
+        $orders = Order::whereBetween('date', [$start, $end])->orderBy('date', 'desc')->paginate(10);
+        // }
+
         $number_order = Order::count();
         $order_finish = Order::where('status', '1')->count();
         $order_notfinish = Order::where('status', '0')->count();
        //dd($orders);
         return view('admin.order.index', compact('orders', 'number_order', 'order_finish', 'order_notfinish'));
+    }
+
+    public function test()
+    {
+        dd(1);
+        return response()->json([
+            'name' => 'Abigail',
+            'state' => 'CA'
+        ]);
     }
 }

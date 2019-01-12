@@ -56,19 +56,14 @@ Route::group([
 	Route::resource('orders', 'OrderController');
 	Route::get('orders/{id}/status', 'OrderController@checkStatus')->name('orders.check');
 	Route::get('orders/status/{status}', 'OrderController@orderStatus')->name('orders.status');
-	Route::get('orders/search', 'OrderController@searchDate')->name('orders.search');
-
+	Route::post('orders/search', 'OrderController@searchDate')->name('orders.search');
+	//Route::get('orders/test', 'OrderController@test');
 
 		//comments
 	Route::resource('comments', 'CommentController');
 
 		//images
-<<<<<<< HEAD
 	Route::resource('images', 'ImageController');
-=======
-		Route::resource('images', 'ImageController');
-		Route::get('/images/{id}/delete', 'ImageController@destroy')->name('images.destroy');
->>>>>>> 57e60f8b8594da7eafc76f5df2036430531bb4ea
 
 		//discounts
 	Route::resource('discounts', 'DiscountController');

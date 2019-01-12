@@ -49,7 +49,17 @@
 				</div>
 			</div>
 			<br>
-			<div style="background: greenyellow;">
+			
+			<div>
+			@if (Session::has('message'))
+			<div class="alert alert-danger"> {{ Session::get('message') }}</div>
+			@endif
+			@if (Session::has('success'))
+			<div class="alert alert-info"> {{ Session::get('success') }}</div>
+			@endif
+			</div>
+			</div>
+			<div>
 				<div class="col-sm-6  p-3">
 					<form action="{{route('admin.orders.search')}}"  method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
@@ -59,20 +69,13 @@
 						<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
 					</form>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-3">
 					<a href="{{route('admin.orders.status',1)}}"><button class="btn btn-success">đã hoàn thành</button></a>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-3">
 					<a href="{{route('admin.orders.status',0)}}"><button class="btn btn-primary">chưa hoàn thành</button></a>
 				</div>
 			</div>
-			<p style="height: 5px"></p>
-			@if (Session::has('message'))
-			<div class="alert alert-danger"> {{ Session::get('message') }}</div>
-			@endif
-			@if (Session::has('success'))
-			<div class="alert alert-info"> {{ Session::get('success') }}</div>
-			@endif
 			<div class="row">
 				<hr>
 				<div class="col-sm-12">
@@ -102,8 +105,7 @@
 							<!-- <td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-success">Success</button></a></td> -->
 							<td>đã hoàn thành</td>
 							@else
-							<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-warning" onclick="return confirm('order này đã hoàn thành rồi đúng ko!')">Check
-										Order</button></a></td>
+							<td><a href="{{route('admin.orders.check',$item->id)}}"><button type="button" class="btn btn-warning" onclick="return confirm('order này đã hoàn thành rồi đúng ko!')">approved</button></a></td>
 
 							@endif
 						</tr>
@@ -159,5 +161,8 @@
 </div>
 
 <!-- /////////// -->
+
+@endsection
+@section('extendscript')
 
 @endsection

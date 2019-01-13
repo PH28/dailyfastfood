@@ -10,16 +10,16 @@ class Order extends Model
     use SoftDeletes;
 
     protected $fillable = [
-    	'date', 'status', 'address', 'phone', 'total_price', 'user_id',
+        'date', 'status', 'address', 'phone', 'total_price', 'user_id',
     ];
 
-    public function user ()
+    public function user()
     {
-    	return $this->belongsTo('Food\User');
+        return $this->belongsTo('Food\User');
     }
 
-    public function orderDetails ()
+    public function orderDetails()
     {
-    	return $this->hasMany('Food\OrderDetail');
+        return $this->hasMany('Food\OrderDetail');
     }
 }

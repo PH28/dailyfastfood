@@ -52,7 +52,7 @@
 						<tr>
                         <td class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="">status</td>
 						@if($order->status==1)
-						<td class="text-success bg-warning"><b>hoàng thành</b></td>
+						<td class="text-success bg-warning"><b>hoàn thành</b></td>
 						@else
 						<td class="text-danger bg-danger"><b>chưa check</b></td>
 						@endif
@@ -85,7 +85,7 @@
 						<tr>
 						<td colspan="3"  align="right" >
 						@if($order->status==0)
-						<a href="{{route('admin.orders.check',$order->id)}}"><button type="button" class="btn btn-warning">check order</button></a>
+						<a href="{{route('admin.orders.check',$order->id)}}"><button type="button" class="btn btn-warning">approved</button></a>
 						@endif
 						<a href="{{route('admin.orders.index')}}"><button type="button" class="btn btn-primary float-right">Cancel</button></a>
 						</td>

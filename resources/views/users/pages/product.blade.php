@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-sm-9">
 
-					<div class="row">
+					<div class="row" id="pro-{{ $product->id }}">
 						<div class="col-sm-4">
 							@foreach($product->images as $p)
 								<img src="{{url($p->path)}}" alt="">
@@ -27,9 +27,10 @@
 						</div>
 						<div class="col-sm-8">
 							<div class="single-item-body">
-								<p class="single-item-title"><h2>{{$product->name}}</h2></p>
+								<p class="single-item-title"><h2 id="productName">{{$product->name}}</h2></p>
 								<p class="single-item-price">
 										<span class="flash-sale">{{number_format($product->price)}} đồng</span>
+										<span hidden id="price">{{$product->price}}</span>
 								</p>
 							</div>
 
@@ -44,8 +45,8 @@
 							<p>Số lượng:</p>
 							<div class="single-item-options">
 								
-								<input type="number" name="" value="1">
-								<a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+								<input type="number" name="" value='1' id='qt'> 
+								<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning addcart"><i class="fa fa-shopping-cart"></i></button>
 								<div class="clearfix"></div>
 							</div>
 						</div>

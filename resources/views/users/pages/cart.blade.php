@@ -3,6 +3,7 @@
 <div class="container">
 <p style="height: 5px"></p>
 
+<div class="col-lg-7">
 @if (Session::has('message'))
 	<div class="alert alert-danger"> {{ Session::get('message') }}</div>
 @endif
@@ -11,10 +12,11 @@
 @endif
 <form action="{{route('users.orders.store')}}" method="POST" enctype="multipart/form-data" >
 {{ csrf_field() }}
+</div>
 <div class="row">
 <!-- cat -->
 <div class="col-lg-8">
-		<center><h2 style="font-weight: bold; color: rgb(50, 72, 194);">giỏ hàng của bạn</h2></center>
+		<center><h2 style="font-weight: bold; color: rgb(50, 72, 194);">Giỏ hàng của bạn</h2></center>
 		<br>
 		<hr>
 <table class="table table-stripped">
@@ -55,21 +57,39 @@
 		</div>
 	
 	  <hr>
-	  <hr>
 	@if(Auth::check())
-<div class="row" style="background: seashell; border-radius: 10px; border-color:red; ">
-<center><h3>thông tin cần đổi</h3></center>
-<hr>
+	<div>
+		<table>
+			<tr>
+				<td><b>Tên&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></td>
+				<td>{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</td></tr>
+			<tr>
+				<td><b> Địa chỉ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b></td>
+				<td> {{ Auth::user()->address }}</td>
+			</tr>
+			<tr>
+				<td><b>số điện thoại&nbsp;:  </b></td>
+				<td>{{ Auth::user()->phone }}</td>
+			</tr>
+		</table>
+		<p id="show">cập nhật thông tin hóa đơn</p>
+	</div>
+	<hr>
+	<div class="ifuser" style="display: none;" >
+	<div class="row" style="background: seashell; border-radius: 10px; border-color:red; ">
+		<center><h3>thông tin</h3></center>
+		<hr>
 
-<div class="form-group">
-        <label for="phone">Phone Number</label>:</label>
-         <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="phone">
- </div>
- <div class="form-group">
-        <label for="phone">addresss</label>:</label>
-         <input type="text" class="form-control" placeholder="address" name="address">
- </div>
- </div>
+		<div class="form-group">
+				<label for="phone">&nbsp;Số điện thoại</label>:</label>
+				<input type="number" class="form-control" placeholder="Nhập số điện thoại" name="phone">
+		</div>
+		<div class="form-group">
+				<label for="phone">&nbsp;Địa chỉ</label>:</label>
+				<input type="text" class="form-control" placeholder="address" name="address">
+		</div>
+		</div>
+	</div>
 @endif
 <button type="submit" class="btn btn-primary "><i class="fa fa-check"> MUA  </i></button>
 <br>

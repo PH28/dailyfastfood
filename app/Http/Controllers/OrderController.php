@@ -149,14 +149,6 @@ class OrderController extends Controller
         //dd(, );
         $start = $request->start;
         $end = $request->end;
-
-        // if ($start == '') {
-        //     //dd('hhhhhhh');
-        //     $orders = Order::whereBetween('date', '<=', $end)->orderBy('date', 'desc')->paginate(10);
-        // } elseif ($end == '') {
-        //     //dd('vbnk');
-        //     $orders = Order::whereBetween('date', '<=', $start)->orderBy('date', 'desc')->paginate(10);
-        // } else {
         if ($start > $end) {
             $f = $start;
             $start = $end;

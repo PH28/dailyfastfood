@@ -61,7 +61,7 @@
 			</div>
 			<div>
 				<div class="col-sm-6  p-3">
-					<form action="{{route('admin.orders.search')}}"  method="POST" enctype="multipart/form-data">
+					<form action="{{route('admin.orders.search')}}"  method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 						<input type="date" name="start"  value="">
 						<label for=""> To </label>

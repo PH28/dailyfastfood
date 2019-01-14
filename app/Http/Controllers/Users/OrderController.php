@@ -39,10 +39,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        try {
 
+       // dd($request->productId);
+        try {
             if (Auth::check()) {
                 if ($request->total == 0) {
+                    //dd($request->total);
+                    //dd($request->productId);
                     return redirect()->back()->with('message', 'vui lòng chọn sản phẩm');
                 }
                 $id = explode(',', $request->productId);
@@ -51,8 +54,11 @@ class OrderController extends Controller
                 $i = 0;
                 while ($i < sizeof($id)) {
                     $product = Product::where('id', $id[$i])->first();
+                    if ($product->quantity == 0) {
+                        return redirect()->back()->with('message', $product->name . ' ' . 'hết hàng rồi bạn nhé');
+                    }
                     if ($product->quantity < $quantity[$i]) {
-                        return redirect()->back()->with('message', 'số lương ' . $product->name . 'qua so luong');
+                        return redirect()->back()->with('message', 'số lương ' . $product->name . ' ' . 'quá số lượng bạn nhé');
                     }
 
                     $i++;

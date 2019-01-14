@@ -80,6 +80,9 @@ Route::group(['namespace' => 'Users', 'as' => 'users.'], function () {
 	Route::get('/cart', 'UsersController@cart')->name('cart');
 	Route::get('/search', 'UsersController@searchProduct')->name('searchProduct');
 	Route::resource('orders', 'OrderController');
+	Route::get('/show/{id}', 'UsersController@getPost');
+	Route::post('/post', 'UsersController@post');
+
 });
 
 Route::group([

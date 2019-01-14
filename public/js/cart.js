@@ -12,12 +12,6 @@ if (datastring) {
 }
 
 if ($('#success')[0]) {
-	//console.log(storageKey);
-
-	// for (var i = 0; i < cart.length; i++) {
-	// 	cart.splice(i, 0);
-	// 	//debugger;
-	// }
 	cart.splice(0, cart.length);
 	drawCheckout();
 }
@@ -92,6 +86,7 @@ function drawCheckout() {
 
 	$('.tbody1').empty();
 	$('.order').empty();
+	//sl san pham
 	$('#sl').empty();
 	$('#sl').append(cart.length);
 
@@ -107,12 +102,12 @@ function drawCheckout() {
 		pr[i] = cart[i].id;
 		sl[i] = cart[i].quantity;
 		totalMoney += cart[i].price * cart[i].quantity;
-		$stt = i + 1;
+		// $stt = i + 1;
 		//console.log(sl[i]);
 		//debugger;
 		ckUnit += `
 					<tr>
-					<td>${$stt}</td>
+					<td>${[i]}</td>
 						<td style="font-weight: bold; font-size: 120%;">${cart[i].productName}</td>
 						<td>
 							<img src="${cart[i].imageUrl}" alt="" width="100"  height="80">
@@ -130,7 +125,7 @@ function drawCheckout() {
 				`;
 		ckUnit1 += `
 					<tr>
-						<td>${$stt}</td>
+						 <td>${[i]}</td>
 						<td>${cart[i].productName}</td>
 						<td>${cart[i].quantity}</td>
 						<td>

@@ -61,7 +61,7 @@
 	</script>
 	
 	<script src="{{ asset('js/cart.js') }}"></script>
-	<!-- @yield('test') -->
+	@yield('test')
 	<script src="{{ asset('js/test.js') }}"></script>
 	
 	

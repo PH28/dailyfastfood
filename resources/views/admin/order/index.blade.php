@@ -115,7 +115,6 @@
 			</div>
 		</div>
 		<div class="" id="">
-			---------------------------------------------------------
 			<ul class="pagination">
 				@if($orders->currentPage() !=1)
 				<li class="paginate_button previous disabled" id="datatable-buttons_previous">
@@ -133,7 +132,6 @@
 					</li>
 					@endif
 			</ul>
-			------------------------------------------------------------------------------------------------------------------------------
 		</div>
 	</div>
 	<!-- /.box -->

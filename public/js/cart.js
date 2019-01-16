@@ -102,12 +102,12 @@ function drawCheckout() {
 		pr[i] = cart[i].id;
 		sl[i] = cart[i].quantity;
 		totalMoney += cart[i].price * cart[i].quantity;
-		// $stt = i + 1;
+		$stt = i + 1;
 		//console.log(sl[i]);
 		//debugger;
 		ckUnit += `
 					<tr>
-					<td>${[i]}</td>
+					<td>${$stt}</td>
 						<td style="font-weight: bold; font-size: 120%;">${cart[i].productName}</td>
 						<td>
 							<img src="${cart[i].imageUrl}" alt="" width="100"  height="80">
@@ -125,7 +125,7 @@ function drawCheckout() {
 				`;
 		ckUnit1 += `
 					<tr>
-						 <td>${[i]}</td>
+						 <td>${$stt}</td>
 						<td>${cart[i].productName}</td>
 						<td>${cart[i].quantity}</td>
 						<td>

@@ -16,7 +16,10 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    var url = document.getElementById("url").value;
+    if ($('#url')[0]) {
+        var url = document.getElementById("url").value;
+    }
+    //var url = document.getElementById("url").value;
     console.log(url);
     showPost(url);
 

@@ -1,5 +1,6 @@
 @extends('users.master')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class="inner-header">
 		<div class="container">
 			<div class="pull-left">
@@ -19,7 +20,7 @@
 			<div class="row">
 				<div class="col-sm-9">
 
-					<div class="row">
+					<div class="row" id="pro-{{ $product->id }}">
 						<div class="col-sm-4">
 							@foreach($product->images as $p)
 								<img src="{{url($p->path)}}" alt="">
@@ -27,9 +28,10 @@
 						</div>
 						<div class="col-sm-8">
 							<div class="single-item-body">
-								<p class="single-item-title"><h2>{{$product->name}}</h2></p>
+								<p class="single-item-title"><h2 id="productName">{{$product->name}}</h2></p>
 								<p class="single-item-price">
 										<span class="flash-sale">{{number_format($product->price)}} đồng</span>
+										<span hidden id="price">{{$product->price}}</span>
 								</p>
 							</div>
 
@@ -44,8 +46,8 @@
 							<p>Số lượng:</p>
 							<div class="single-item-options">
 								
-								<input type="number" name="" value="1">
-								<a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+								<input type="number" name="" value='1' id='qt'> 
+								<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning addcart"><i class="fa fa-shopping-cart"></i></button>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -61,7 +63,29 @@
 							<p>{{$product->description}}</p>
 						</div>
 					</div>
-					<div class="space50">&nbsp;</div>
+					<div class="space50">&nbsp;
+					<input type="hidden" value='/show/{{ $product->id }}' id="url">
+					<div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+				<input type="hidden"  value="{{Auth::user()}}" id="check">
+                    <form id="postForm">
+					<!-- @csrf -->
+						<div class="col-lg-10 col-md-10 col-sm-6 col-xs-12">
+						<textarea class="form-control" name="content" id="post" placeholder="What's on your mind?"></textarea>
+						</div>
+						<input type="hidden" name="product_id" value="{{$product->id}}">
+                       <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+					   <button type="button" id="postBtn" class="btn btn-primary" style="margin-top:5px;"><i class="fa fa-pencil-square-o"></i> POST</button>
+					   </div>
+                    </form>
+                </div>
+            </div>
+            <div id="postList"></div>
+        </div>
+    </div>
+					</div>
 					<div class="beta-products-list">
 						<h4>Sản phẩm tương tự</h4>
 
@@ -136,3 +160,6 @@
 		</div> <!-- #content -->
 	</div> <!-- .container -->
 @endsection
+<!-- @section('test')
+<script src="{{ asset('js/test.js') }}"></script>
+@endtest -->

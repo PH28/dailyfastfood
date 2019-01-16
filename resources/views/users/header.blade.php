@@ -39,10 +39,9 @@
 					<div class="beta-comp">
 
 							<!-- <div class="beta-select"> -->
-							<div class="cart">
-							<a  class="fa fa-shopping-cart" href="{{route('users.cart')}}" data-toggle="tooltip" data-placement="left" title="Cart">cart</a>
-							
-							</div>
+							<!-- <div class="cart"> -->
+								<a  class="" href="{{route('users.cart')}}" data-toggle="tooltip" data-placement="left" title="Cart" ><button  id="sl" class="btn btn-primary btn-lg fa fa-shopping-cart"></button></a>
+							<!-- </div> -->
 
 					</div>
 				</div>

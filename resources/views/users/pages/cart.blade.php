@@ -25,7 +25,7 @@
 				<table class="table table-stripped">
 					<thead class="" style="font-size: 140%;">
 						<tr>
-							<th>ID</th>
+							<th>STT</th>
 							<th>Product name</th>
 							<th width="100">Image</th>
 							<th>quantity</th>

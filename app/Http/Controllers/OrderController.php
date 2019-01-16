@@ -164,12 +164,4 @@ class OrderController extends Controller
         return view('admin.order.index', compact('orders', 'number_order', 'order_finish', 'order_notfinish'));
     }
 
-    public function test()
-    {
-        dd(1);
-        return response()->json([
-            'name' => 'Abigail',
-            'state' => 'CA'
-        ]);
-    }
 }

@@ -52,7 +52,7 @@
 	                                    <td>{{ $image->id }}</td>
 	                                    <td>{{ $image->name }}</td>
 	                                    <td>{{ $image->product->name }}</td>
-                                      <td>{{ url($image->getFirstImageAttribute()->path) }}</td>
+                                      <td>{{ url($image->path) }}</td>
 	                                    <td>
 	                                        <div class="btn-group">                 
 	                                            <a href="{{ route('admin.images.destroy', $image->id) }}" class="btn btn-default bg-red btnDelete" onclick="return confirm('Are you sure?')">

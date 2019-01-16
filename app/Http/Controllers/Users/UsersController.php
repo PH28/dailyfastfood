@@ -15,14 +15,16 @@ class UsersController extends Controller
 {
     public function getIndex()
     {
-        $slides = Slide::all();
-        $categories = Category::all();
-        unset($categories[0], $categories[1]);
-        $eat_cates = Category::where('parent_id', 1)->pluck('id')->toArray();
-        $eat_products = Product::whereIn('category_id', $eat_cates)->with('images')->paginate(8);
-        $drink_cates = Category::where('parent_id', 2)->pluck('id')->toArray();
-        $drink_products = Product::whereIn('category_id', $drink_cates)->with('images')->paginate(4);
-        return view('users.pages.index', compact('slides', 'categories', 'eat_products', 'drink_products'));
+
+    	$slides = Slide::all();
+    	$categories = Category::all();
+    	unset($categories[0], $categories[1]);
+        $eat_cates = Category::where('parent_id' , 1)->pluck('id')->toArray();
+        $eat_products = Product::whereIn('category_id', $eat_cates)->with('images')->inRandomOrder()->paginate(8);
+    	$drink_cates = Category::where('parent_id' , 2)->pluck('id')->toArray();
+        $drink_products = Product::whereIn('category_id', $drink_cates)->with('images')->inRandomOrder()->paginate(4);
+    	return view('users.pages.index', compact('slides', 'categories', 'eat_products', 'drink_products'));
+
     }
 
     public function getCategory($id)
@@ -37,14 +39,15 @@ class UsersController extends Controller
 
     public function getProduct(Request $request)
     {
-       // dd($request);
         $categories = Category::all();
         unset($categories[0], $categories[1]);
         $product = Product::where('id', $request->id)->with('images')->first();
         $similar_products = Product::where('category_id', $product->category_id)->with('images')->paginate(6);
-        
-        //dd($request->ajax());
-        return view('users.pages.product', compact('categories', 'product', 'similar_products', 'comments'));
+        $eat_cates = Category::where('parent_id' , 1)->pluck('id')->toArray();
+        $eat_products = Product::whereIn('category_id', $eat_cates)->with('images')->inRandomOrder()->take(4)->get();
+        $drink_cates = Category::where('parent_id' , 2)->pluck('id')->toArray();
+        $drink_products = Product::whereIn('category_id', $drink_cates)->with('images')->inRandomOrder()->take(4)->get();
+        return view('users.pages.product',compact('categories', 'product','similar_products', 'eat_products', 'drink_products'));
     }
 
     public function getContact()
@@ -65,9 +68,19 @@ class UsersController extends Controller
         $categories = Category::all();
         unset($categories[0], $categories[1]);
         $search = $request->search;
+        if($search == "")
+        {
+            $products = Product::inRandomOrder()->paginate(9);
+        }
+        else
+        {
+            $products = Product::where('name', 'like', '%'.$search.'%')->with('images')->paginate(6);
+            $products->appends($request->only('search'));
+        }
         $products = Product::where('name', 'like', '%' . $search . '%')->withCount('images')->paginate(6);
         return view('users.pages.search', compact('categories', 'search', 'products'));
     }
+    
     public function getPost($id)
     {
         $posts = Comment::with('product', 'user')->where('product_id', $id)->get();

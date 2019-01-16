@@ -94,7 +94,7 @@
 							<div class="col-sm-4">
 								<div class="single-item">
 									<div class="single-item-header">
-										<a href="">
+										<a href="{{route('users.product', $sml_p->id)}}">
 											@foreach($sml_p->images as $sml)
 												<img src="{{url($sml->path)}}" alt="" height="150px">
 											@endforeach
@@ -120,72 +120,38 @@
 				</div>
 				<div class="col-sm-3 aside">
 					<div class="widget">
-						<h3 class="widget-title">Best Sellers</h3>
+						<h3 class="widget-title">Đồ ăn</h3>
 						<div class="widget-body">
 							<div class="beta-sales beta-lists">
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
+								@foreach($eat_products as $eat)
+									<div class="media beta-sales-item">
+										@foreach($eat->images as $e)
+											<a class="pull-left" href="{{route('users.product', $eat->id)}}"><img src="{{url($e->path)}}" alt=""></a>
+										@endforeach
+										<div class="media-body">
+											<p class="single-item-title">{{ $eat->name }}</p>
+											<span class="beta-sales-price">{{ $eat->price }} đồng</span>
+										</div>
 									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div> <!-- best sellers widget -->
 					<div class="widget">
-						<h3 class="widget-title">New Products</h3>
+						<h3 class="widget-title">Thức uống</h3>
 						<div class="widget-body">
 							<div class="beta-sales beta-lists">
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
+								@foreach($drink_products as $drink)
+									<div class="media beta-sales-item">
+										@foreach($drink->images as $d)
+											<a class="pull-left" href="{{route('users.product', $drink->id)}}"><img src="{{url($d->path)}}" alt=""></a>
+										@endforeach
+										<div class="media-body">
+											<p class="single-item-title">{{ $drink->name }}</p>
+											<span class="beta-sales-price">{{ $drink->price }} đồng</span>
+										</div>
 									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href=""><img src="" alt=""></a>
-									<div class="media-body">
-										Sample Woman Top
-										<span class="beta-sales-price">$34.55</span>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div> <!-- best sellers widget -->

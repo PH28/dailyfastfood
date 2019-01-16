@@ -50,7 +50,7 @@ class ImageController extends Controller
                     $images = str_random(5)."_".$name;
                 }
                 $file->move($path, $images);
-                array_push($array, $images);
+                array_push($array, $images); 
             }
         }
         if(Image::create($data)) {

@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="pull-left auto-width-left">
 					<ul class="top-menu menu-beta l-inline">
-						<li><a href=""><i class="fa fa-home"></i> 222 Nguyễn Văn Linh - Đà Nẵng</a></li>
+						<li><a href=""><i class="fa fa-home"></i> 200 Nguyễn Văn Linh - Đà Nẵng</a></li>
 						<li><a href=""><i class="fa fa-phone"></i> 0898.225.425</a></li>
 					</ul>
 				</div>

@@ -155,6 +155,7 @@ class OrderController extends Controller
             $end = $f;
         }
         $orders = Order::whereBetween('date', [$start, $end])->orderBy('date', 'desc')->paginate(10);
+        //$orders->appends($request->only('start', 'end'));
         // }
 
         $number_order = Order::count();

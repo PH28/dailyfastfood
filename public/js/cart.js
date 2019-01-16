@@ -48,6 +48,7 @@ $(document).ready(function () {
 	});
 	$('#show').click(function () {
 		$('.ifuser').toggle("slide");
+
 	});
 	$('.addcart').on('click', function () {
 		var proId = $(this).attr('productId');

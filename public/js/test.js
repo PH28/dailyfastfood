@@ -36,7 +36,7 @@ $(document).ready(function () {
             $('#post').focus();
         }
         else {
-            var postForm = $('#postForm').serialize();//Api day chuyeen qua thif phair
+            var postForm = $('#postForm').serialize();//day chuyeen qua Api 
             console.log(postForm);
             $.ajax({
                 type: 'POST',
@@ -55,37 +55,6 @@ $(document).ready(function () {
                 },
             });
         }
-    });
-
-    $(document).on('click', '.comment', function () {
-        var id = $(this).val();
-        if ($('#commentField_' + id).is(':visible')) {
-            $('#commentField_' + id).slideUp();
-        }
-        else {
-            $('#commentField_' + id).slideDown();
-            getComment(id);
-        }
-    });
-
-    $(document).on('click', '.submitComment', function () {
-        var id = $(this).val();
-        if ($('#commenttext').val() == '') {
-            alert('Please write a Comment First!');
-        }
-        else {
-            var commentForm = $('#commentForm_' + id).serialize();
-            $.ajax({
-                type: 'POST',
-                url: 'writecomment',
-                data: commentForm,
-                success: function () {
-                    getComment(id);
-                    $('#commentForm_' + id)[0].reset();
-                },
-            });
-        }
-
     });
 
 });

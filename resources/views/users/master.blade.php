@@ -43,7 +43,6 @@
 	<script src="{{ asset('user/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 	<script src="{{ asset('user/js/waypoints.min.js') }}"></script>
 	<script src="{{ asset('user/js/wow.min.js') }}"></script>
-	<script src="{{ asset('js/cart.js') }}"></script>
 	<!--customjs-->
 	<script src="{{ asset('user/js/custom2.js') }}"></script>
 
@@ -61,7 +60,6 @@
 	</script>
 	
 	<script src="{{ asset('js/cart.js') }}"></script>
-	@yield('test')
 	<script src="{{ asset('js/test.js') }}"></script>
 	
 </body>

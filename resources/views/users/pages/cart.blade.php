@@ -44,7 +44,7 @@
 					<br>
 					<div style="border-color: green; border-radius: 10px; background-color:rgb(151, 238, 238);">
 						<center>
-							<h2 style="font-weight: bold; color: red;">hóa đơn</h2>
+							<h2 style="font-weight: bold; color: red;">Hóa đơn</h2>
 						</center>
 						<table class="table">
 							<thead>
@@ -79,14 +79,14 @@
 								<td>{{ Auth::user()->phone }}</td>
 							</tr>
 						</table>
-						<p id="show">cập nhật thông tin hóa đơn</p>
+						<p id="show" class=""><b>cập nhật thông tin hóa đơn</b></p>
 					</div>
 					<hr>
 					<!-- // thông tin -->
 					<div class="ifuser" style="display: none;">
 						<div class="row" style="background: seashell; border-radius: 10px; border-color:red; ">
 							<center>
-								<h3>thông tin</h3>
+								<h3>Thông Tin</h3>
 							</center>
 							<hr>
 

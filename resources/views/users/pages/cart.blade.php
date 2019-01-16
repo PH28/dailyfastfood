@@ -79,7 +79,7 @@
 								<td>{{ Auth::user()->phone }}</td>
 							</tr>
 						</table>
-						<p id="show" class="text-danger"><b>cập nhật thông tin hóa đơn</b></p>
+						<p id="show" class=""><b>cập nhật thông tin hóa đơn</b></p>
 					</div>
 					<hr>
 					<!-- // thông tin -->

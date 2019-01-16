@@ -47,7 +47,7 @@
 							<div class="single-item-options">
 								
 								<input type="number" name="" value='1' id='qt'> 
-								<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning addcart"><i class="fa fa-shopping-cart"></i></button>
+								<button type="button" productId="{{ $product->id }}" class="btn btn-sm btn-warning addcart p-3"><i class="fa fa-shopping-cart"></i></button>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -91,7 +91,7 @@
 
 						<div class="row">
 						@foreach($similar_products as $sml_p)
-							<div class="col-sm-4">
+							<div class="col-sm-4" id="pro-{{ $sml_p->id }}">
 								<div class="single-item">
 									<div class="single-item-header">
 										<a href="{{route('users.product', $sml_p->id)}}">
@@ -101,15 +101,16 @@
 										</a>
 									</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$sml_p->name}}</p>
+										<p class="single-item-title" id="productName">{{$sml_p->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
 												<span class="flash-sale">{{number_format($sml_p->price)}} đồng</span>
+												<span hidden id="price">{{$sml_p->price}}</span>
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
-										<div class="clearfix"></div>
+											<button type="button" productId="{{ $sml_p->id }}" class="btn btn-sm btn-warning add2cart"><i class="fa fa-shopping-cart"></i></button>
+											<a class="beta-btn primary" href="{{route('users.product',$sml_p->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
 									</div>
 								</div>
 							</div>

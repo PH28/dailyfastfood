@@ -36,7 +36,7 @@ $(document).ready(function () {
             $('#post').focus();
         }
         else {
-            var postForm = $('#postForm').serialize();//Api day chuyeen qua thif phair
+            var postForm = $('#postForm').serialize();//day chuyeen qua Api 
             console.log(postForm);
             $.ajax({
                 type: 'POST',

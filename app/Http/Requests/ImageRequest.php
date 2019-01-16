@@ -26,7 +26,7 @@ class ImageRequest extends FormRequest
         return [
             'name' => 'required',
             'product_id' => 'required',
-            'images[]' => 'required'
+            'images' => 'required'
         ];
     }
 
@@ -35,7 +35,7 @@ class ImageRequest extends FormRequest
         return [
             'name.required' => 'Please input name',
             'product_id.required' => 'Please select products',
-            'images[].required' => 'Please choose file'
+            'images.required' => 'Please choose file'
         ];
     }
 }

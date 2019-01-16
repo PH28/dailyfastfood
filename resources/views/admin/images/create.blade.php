@@ -13,7 +13,7 @@
        </ol>
    </section>
    <section class="content">
-       <form action="{{ route('admin.images.store') }}" method="POST">
+       <form action="{{ route('admin.images.store') }}" method="POST" enctype="multipart/form-data">
            @csrf
            <div class="box">
                <div class="box-body row">

@@ -68,6 +68,7 @@ class UsersController extends Controller
         $categories = Category::all();
         unset($categories[0], $categories[1]);
         $search = $request->search;
+
         if($search == "")
         {
             $products = Product::inRandomOrder()->paginate(9);
@@ -77,7 +78,6 @@ class UsersController extends Controller
             $products = Product::where('name', 'like', '%'.$search.'%')->with('images')->paginate(6);
             $products->appends($request->only('search'));
         }
-        $products = Product::where('name', 'like', '%' . $search . '%')->withCount('images')->paginate(6);
         return view('users.pages.search', compact('categories', 'search', 'products'));
     }
     

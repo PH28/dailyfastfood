@@ -37,14 +37,12 @@ class UsersController extends Controller
 
     public function getProduct(Request $request)
     {
-       // dd($request);
         $categories = Category::all();
         unset($categories[0], $categories[1]);
         $product = Product::where('id', $request->id)->with('images')->first();
         $similar_products = Product::where('category_id', $product->category_id)->with('images')->paginate(6);
-        
-        //dd($request->ajax());
-        return view('users.pages.product', compact('categories', 'product', 'similar_products', 'comments'));
+
+        return view('users.pages.product', compact('categories', 'product', 'similar_products'));
     }
 
     public function getContact()
